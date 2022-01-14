@@ -10,7 +10,6 @@ function LoginView() {
         Log in
       </Button>
     </StyledDiv>
-    // <h1>Log in</h1>
   );
 }
 

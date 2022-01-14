@@ -11,8 +11,6 @@ function App({ children }) {
       <GlobalStyles />
       {children}
     </ThemeProvider>
-    // <App />
-    // <h1>Hello</h1>
   );
 }
 
