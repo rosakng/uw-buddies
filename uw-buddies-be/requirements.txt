@@ -2,3 +2,7 @@ Flask~=2.0.2
 flask-restx==0.5.1
 pymongo==4.0.1
 dnspython==2.2.0
+pydantic==1.9.0
+typing-extensions==4.0.1
+fastapi==0.73.0
+
