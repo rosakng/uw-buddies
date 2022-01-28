@@ -2,6 +2,10 @@ from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel, Field
 from typing import List
 
+"""
+Define user collection schema persisted in Mongo
+"""
+
 
 class Education(BaseModel):
     faculty: str

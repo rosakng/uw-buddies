@@ -1,4 +1,4 @@
 def register_routes(api, app):
-    from api.user import register_routes as attach_survey
+    from api.user import register_routes as attach_user
 
-    attach_survey(api, app)
+    attach_user(api, app)
