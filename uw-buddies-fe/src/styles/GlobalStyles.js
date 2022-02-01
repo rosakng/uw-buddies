@@ -56,7 +56,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    color: ${theme.colors.gray[9]};
+    color: ${theme.colors.gray[0]};
     font-family: ${theme.font.family.sans};
     font-size: ${theme.font.size[2]};
     font-weight: ${theme.font.weight.normal};
