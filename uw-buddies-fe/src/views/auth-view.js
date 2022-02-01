@@ -29,7 +29,7 @@ const learnContainerStyle = {
   textAlign: 'center',
 };
 function AuthView() {
-  document.body.style.backgroundColor = theme.colors.gray[2];
+  document.body.style.backgroundColor = theme.colors.gray[0];
 
   const navigate = useNavigate();
   const onSignUpClick = () => navigate(ROUTES.DASHBOARD); // navigate to third party auth

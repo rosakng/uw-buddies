@@ -29,7 +29,7 @@ const learnContainerStyle = {
   textAlign: 'center',
 };
 function LearnMoreView() {
-  document.body.style.backgroundColor = theme.colors.gray[2];
+  document.body.style.backgroundColor = theme.colors.gray[0];
 
   const navigate = useNavigate();
   const onLearnClick = () => navigate(ROUTES.AUTHENTICATE);

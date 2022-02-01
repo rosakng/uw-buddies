@@ -27,7 +27,7 @@ const homeContainerStyle = {
   borderRadius: '10px',
 };
 function HomeView() {
-  document.body.style.backgroundColor = theme.colors.gray[2];
+  document.body.style.backgroundColor = theme.colors.gray[0];
   const navigate = useNavigate();
   const onLearnClick = () => navigate(ROUTES.LEARN);
 
