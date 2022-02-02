@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import styled from 'styled-components';
 
@@ -15,12 +17,12 @@ import UWBuddiesLogo from 'assets/icons/logo';
 
 const MenuContainer = styled.header`
   background: ${(props) => props.theme.colors.blue[2]};
-  borderRadius: '10px',
+  borderRadius: '10px';
 `;
 
 const LinksContainer = styled.header`
   background: ${(props) => props.theme.colors.white};
-  borderRadius: '10px',
+  borderRadius: '10px';
 `;
 
 const matchStyle = {
@@ -44,6 +46,7 @@ const noMatchStyle = {
 
 const logoutStyle = {
   alignItems: 'center',
+  bottom: '0',
 };
 
 function MenuLink({ to, children }) {
@@ -78,7 +81,7 @@ function SideMenu() {
 
   return (
     <MenuContainer>
-      <StyledDiv flex alignItems="center" padding={10}>
+      <StyledDiv flex alignItems="center" height={100} padding={10}>
         {/* UW BUDDIES LOGO */}
         <div style={titleStyle}>
           UW Buddies
@@ -88,7 +91,7 @@ function SideMenu() {
       <LinksContainer>
         {/* MENU LINKS */}
         {currentUser && (
-        <StyledDiv>
+        <div style={{  height: 'calc(100vh - 100px - 44px)'}}>
           <StyledDiv>
             <MenuLink to={ROUTES.DASHBOARD}>Dashboard</MenuLink>
           </StyledDiv>
@@ -104,7 +107,7 @@ function SideMenu() {
           <StyledDiv>
             <MenuLink to={ROUTES.LEARN}>Results</MenuLink>
           </StyledDiv>
-        </StyledDiv>
+        </div>
         )}
 
         {/* LOGOUT */}
