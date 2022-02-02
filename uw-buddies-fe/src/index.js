@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import UWBuddiesRouter from 'router';
+import enTranslations from '@shopify/polaris/locales/en.json';
+import { AppProvider } from '@shopify/polaris';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <UWBuddiesRouter />
+    <AppProvider i18n={enTranslations}>
+      <UWBuddiesRouter />
+    </AppProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

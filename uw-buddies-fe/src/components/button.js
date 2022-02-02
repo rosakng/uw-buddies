@@ -60,13 +60,13 @@ const Button = styled.button`
   ${(props) => props.primary && `
     color: white;
     border: none;
-    background: ${props.theme.colors.green[2]};
+    background: ${props.theme.colors.blue[2]};
     font-weight: ${props.theme.font.weight.medium};
 
     &:hover {
       color: white;
       border: none;
-      background: ${props.theme.colors.green[4]};
+      background: ${props.theme.colors.gray[6]};
     }
 
     &[disabled] {
@@ -76,14 +76,14 @@ const Button = styled.button`
   `}
 
   ${(props) => props.inverse && `
-    color: white;
+    color: black;
     border: none;
-    background: rgba(255, 255, 255, 0.1);
+    background: ${props.theme.colors.white};
 
     &:hover {
       color: white;
       border: none;
-      background: rgba(255, 255, 255, 0.3);
+      background: ${props.theme.colors.blue[2]};
     }
   `}
 
@@ -102,7 +102,7 @@ const Button = styled.button`
     padding-left: 0px;
     padding-right: 0px;
     min-width: 0px;
-    color: ${props.theme.colors.green[0]};
+    color: ${props.theme.colors.blue[0]};
   `}
 `;
 
