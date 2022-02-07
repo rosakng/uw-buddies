@@ -7,7 +7,7 @@ from jose import jwt
 from six.moves.urllib.request import urlopen
 
 AUTH0_DOMAIN = 'dev-2u1sec9x.us.auth0.com'
-API_AUDIENCE = "https://uw-buddies-be/api"
+API_AUDIENCE = "https://dev-2u1sec9x.us.auth0.com/api/v2/"
 ALGORITHMS = ["RS256"]
 
 
@@ -36,7 +36,6 @@ def get_token_auth_header():
                              "Authorization header is expected"}, 401)
 
     parts = auth.split()
-    print(parts)
     if parts[0].lower() != "bearer":
         raise AuthError({"code": "invalid_header",
                          "description":
@@ -46,7 +45,6 @@ def get_token_auth_header():
         raise AuthError({"code": "invalid_header",
                          "description": "Token not found"}, 401)
     elif len(parts) > 2:
-        print(len(parts))
         raise AuthError({"code": "invalid_header",
                          "description":
                              "Invalid arguments"}, 401)
