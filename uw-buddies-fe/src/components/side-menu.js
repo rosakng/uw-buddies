@@ -7,6 +7,8 @@ import theme from 'styles/theme';
 import Button from 'components/button';
 import PropTypes from 'prop-types';
 
+import { useAuth0 } from '@auth0/auth0-react';
+
 import {
   useResolvedPath, useMatch, Link, useNavigate,
 } from 'react-router-dom';
@@ -81,10 +83,12 @@ const Title = styled.h1`
 `;
 
 function SideMenu() {
-  const currentUser = true; // integrate auth
-  const onLogout = () => {};
   const navigate = useNavigate();
   const onLogoClick = () => navigate(ROUTES.DASHBOARD);
+  const { user, logout } = useAuth0();
+  const onLogout = () => {
+    logout({ returnTo: `${window.location.origin}${ROUTES.HOME}` });
+  };
 
   return (
     <div>
@@ -97,7 +101,7 @@ function SideMenu() {
       </LogoButton>
       <LinksContainer>
         {/* MENU LINKS */}
-        {currentUser && (
+        {user && (
         <div style={{ height: 'calc(100vh - 13vh - 44px)' }}>
           <div>
             <MenuLink to={ROUTES.DASHBOARD}>Dashboard</MenuLink>
@@ -118,9 +122,9 @@ function SideMenu() {
         )}
 
         {/* LOGOUT */}
-        {currentUser && (
+        {user && (
         <div style={logoutStyle}>
-          {currentUser && <Button inverse onClick={onLogout}>Logout</Button>}
+          {user && <Button inverse onClick={onLogout}>Logout</Button>}
         </div>
         )}
       </LinksContainer>

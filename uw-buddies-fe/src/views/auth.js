@@ -1,11 +1,10 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import UWBuddiesLogo from 'assets/icons/logo';
 import theme from 'styles/theme';
 import Button from 'components/button';
-import ROUTES from 'lib/routes';
 import InactiveLayout from 'components/inactive-layout';
 
 const learnStyle = {
@@ -30,10 +29,11 @@ const learnContainerStyle = {
   textAlign: 'center',
 };
 function Auth() {
+  const { loginWithRedirect } = useAuth0();
+  const onSignUpClick = () => loginWithRedirect();
   document.body.style.backgroundColor = theme.colors.gray[0];
 
-  const navigate = useNavigate();
-  const onSignUpClick = () => navigate(ROUTES.DASHBOARD); // navigate to third party auth
+  // navigate to third party auth which will redirect to ROUTES.dashboard once user is authenticated
 
   return (
     <InactiveLayout>
