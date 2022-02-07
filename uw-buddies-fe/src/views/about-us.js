@@ -1,57 +1,33 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
-import UWBuddiesLogo from 'assets/icons/logo';
 import theme from 'styles/theme';
-import Button from 'components/button';
-import ROUTES from 'lib/routes';
 import InactiveLayout from 'components/inactive-layout';
+import styled from 'styled-components';
 
-const learnStyle = {
-  position: 'absolute',
-  left: '50%',
-  top: '50%',
-  transform: 'translate(-50%, -50%)',
-};
+const Title = styled.h1`
+  font-weight: ${(props) => props.theme.font.weight.normal};
+  font-size: ${(props) => props.theme.font.size[13]};
+  color: ${(props) => props.theme.colors.black};
+`;
 
-const learnContentStyle = {
-  fontSize: `${theme.font.size[6]}`,
-  fontWeight: `${theme.font.weight.semibold}`,
-  lineHeight: `${theme.font.lineHeight.loose}`,
-  margin: `${theme.space[4]}`,
-};
+const Subtitle = styled.h2`
+  margin-top: ${(props) => props.theme.space[6]};
+  font-weight: ${(props) => props.theme.font.weight.light};
+  font-size: ${(props) => props.theme.font.size[6]};
+  color: ${(props) => props.theme.colors.gray[7]};
+`;
 
-const learnContainerStyle = {
-  color: theme.colors.black,
-  backgroundColor: theme.colors.white,
-  padding: theme.space[14],
-  borderRadius: '10px',
-  alignContent: 'center',
-  textAlign: 'center',
-};
 function AboutUs() {
   document.body.style.backgroundColor = theme.colors.gray[0];
 
-  const navigate = useNavigate();
-  const onLearnClick = () => navigate(ROUTES.AUTHENTICATE);
-
   return (
     <InactiveLayout>
-      <div style={learnStyle}>
-        <div style={learnContainerStyle}>
-          <UWBuddiesLogo size="200vh" />
-          <div style={learnContentStyle}>
-            AboutUsView
-            <br />
-            AboutUsView
-          </div>
-          <Button inline primary onClick={onLearnClick}>
-            Continue
-          </Button>
-
-        </div>
-      </div>
+      <Title>About Us</Title>
+      <Subtitle>
+        UW buddies is the capstone project of a group of 4B Management Engineering
+        students looking to help others make friends. Meet the team!
+      </Subtitle>
     </InactiveLayout>
   );
 }

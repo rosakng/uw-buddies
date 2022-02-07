@@ -15,6 +15,8 @@ import Auth from 'views/auth';
 import App from 'App';
 import AboutUs from 'views/about-us';
 import ContactUs from 'views/contact-us';
+import How from 'views/how';
+import Privacy from 'views/privacy';
 
 export default function UWBuddiesRouter() {
   return (
@@ -24,6 +26,8 @@ export default function UWBuddiesRouter() {
           <Route exact path={ROUTES.HOME} element={<Home />} />
           <Route exact path={ROUTES.AUTHENTICATE} element={<Auth />} />
           <Route exact path={ROUTES.LEARN} element={<LearnMore />} />
+          <Route exact path={ROUTES.HOW} element={<How />} />
+          <Route exact path={ROUTES.PRIVACY} element={<Privacy />} />
           <Route exact path={ROUTES.ABOUT} element={<AboutUs />} />
           <Route exact path={ROUTES.CONTACT} element={<ContactUs />} />
           <Route exact path={ROUTES.QUESTIONNARE} element={<Questionnaire />} />
