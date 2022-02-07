@@ -1,6 +1,8 @@
 const ROUTES = {
   HOME: '/home',
   LEARN: '/learn',
+  ABOUT: '/about',
+  CONTACT: '/contact',
   AUTHENTICATE: '/authenticate',
   DASHBOARD: '/dashboard',
   QUESTIONNARE: '/questionnare',

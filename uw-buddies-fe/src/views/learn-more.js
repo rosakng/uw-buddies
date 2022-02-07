@@ -6,6 +6,7 @@ import UWBuddiesLogo from 'assets/icons/logo';
 import theme from 'styles/theme';
 import Button from 'components/button';
 import ROUTES from 'lib/routes';
+import InactiveLayout from 'components/inactive-layout';
 
 const learnStyle = {
   position: 'absolute',
@@ -22,34 +23,37 @@ const learnContentStyle = {
 };
 
 const learnContainerStyle = {
+  color: theme.colors.black,
   backgroundColor: theme.colors.white,
   padding: theme.space[14],
   borderRadius: '10px',
   alignContent: 'center',
   textAlign: 'center',
 };
-function LearnMoreView() {
+function LearnMore() {
   document.body.style.backgroundColor = theme.colors.gray[0];
 
   const navigate = useNavigate();
   const onLearnClick = () => navigate(ROUTES.AUTHENTICATE);
 
   return (
-    <div style={learnStyle}>
-      <div style={learnContainerStyle}>
-        <UWBuddiesLogo size="200vh" />
-        <div style={learnContentStyle}>
-          Welcome to UW Buddies
-          <br />
-          This is how your data is being used etc etc
-        </div>
-        <Button inline primary onClick={onLearnClick}>
-          Continue
-        </Button>
+    <InactiveLayout>
+      <div style={learnStyle}>
+        <div style={learnContainerStyle}>
+          <UWBuddiesLogo size="200vh" />
+          <div style={learnContentStyle}>
+            Welcome to UW Buddies
+            <br />
+            This is how your data is being used etc etc
+          </div>
+          <Button inline primary onClick={onLearnClick}>
+            Continue
+          </Button>
 
+        </div>
       </div>
-    </div>
+    </InactiveLayout>
   );
 }
 
-export default LearnMoreView;
+export default LearnMore;
