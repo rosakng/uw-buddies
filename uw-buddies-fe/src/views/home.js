@@ -59,7 +59,7 @@ function Home() {
 
   return (
     <InactiveLayout>
-      <StyledDiv flex>
+      <StyledDiv flex justifyContent="space-between">
         <StyledDiv marginBottom={12}>
           <Title>Find your next buddy!</Title>
           <Subtitle>
@@ -72,7 +72,7 @@ function Home() {
           <RegisterButton onClick={() => {}}>Sign in / Sign up</RegisterButton>
         </StyledDiv>
         <StyledDiv marginVertical={12}>
-          <UWBuddiesLogo size="200vh" />
+          <UWBuddiesLogo size="250vh" />
         </StyledDiv>
       </StyledDiv>
       <HomeContainer>
