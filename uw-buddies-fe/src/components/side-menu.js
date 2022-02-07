@@ -20,10 +20,12 @@ const LogoButton = styled.button`
   border: none;
   background: ${(props) => props.theme.colors.blue[2]};
   height: 13vh;
+  width: 15vw;
   text-decoration: none;
   transition: none!important;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: ${(props) => props.theme.space[10]};
   border-radius: 10px;
 `;
@@ -96,7 +98,7 @@ function SideMenu() {
       <LinksContainer>
         {/* MENU LINKS */}
         {currentUser && (
-        <div style={{ height: 'calc(100vh - 100px - 44px)' }}>
+        <div style={{ height: 'calc(100vh - 13vh - 44px)' }}>
           <div>
             <MenuLink to={ROUTES.DASHBOARD}>Dashboard</MenuLink>
           </div>
