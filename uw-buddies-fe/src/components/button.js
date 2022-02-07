@@ -1,15 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-/**
- *
- * WARNING: Before changing this file, please strongly consider whether your change is
- * necessary (we want to avoid unexpected bugs in other views).
- * This code is meant to be shared by many views throughout our app and should not
- * contain logic specifc to how your view is using it.
- *
- */
-
 const Button = styled.button`
   background: transparent;
   border: 1px ${(props) => props.theme.colors.gray[4]} solid;

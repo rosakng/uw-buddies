@@ -6,6 +6,7 @@ import UWBuddiesLogo from 'assets/icons/logo';
 import theme from 'styles/theme';
 import Button from 'components/button';
 import ROUTES from 'lib/routes';
+import InactiveLayout from 'components/inactive-layout';
 
 const learnStyle = {
   position: 'absolute',
@@ -22,34 +23,37 @@ const learnContentStyle = {
 };
 
 const learnContainerStyle = {
+  color: theme.colors.black,
   backgroundColor: theme.colors.white,
   padding: theme.space[14],
   borderRadius: '10px',
   alignContent: 'center',
   textAlign: 'center',
 };
-function AuthView() {
+function ContactUs() {
   document.body.style.backgroundColor = theme.colors.gray[0];
 
   const navigate = useNavigate();
-  const onSignUpClick = () => navigate(ROUTES.DASHBOARD); // navigate to third party auth
+  const onLearnClick = () => navigate(ROUTES.AUTHENTICATE);
 
   return (
-    <div style={learnStyle}>
-      <div style={learnContainerStyle}>
-        <UWBuddiesLogo size="200vh" />
-        <div style={learnContentStyle}>
-          This is how auth works
-          <br />
-          what we do with your email
-        </div>
-        <Button inline primary onClick={onSignUpClick}>
-          Sign In / Register
-        </Button>
+    <InactiveLayout>
+      <div style={learnStyle}>
+        <div style={learnContainerStyle}>
+          <UWBuddiesLogo size="200vh" />
+          <div style={learnContentStyle}>
+            ContactUsView
+            <br />
+            ContactUsView
+          </div>
+          <Button inline primary onClick={onLearnClick}>
+            Continue
+          </Button>
 
+        </div>
       </div>
-    </div>
+    </InactiveLayout>
   );
 }
 
-export default AuthView;
+export default ContactUs;

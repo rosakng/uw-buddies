@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledDiv from 'components/styled-div';
 import Logo from 'assets/icons/logo.svg';
+import StyledDiv from 'components/styled-div';
 
 function UWBuddiesLogo({ size }) {
   return (

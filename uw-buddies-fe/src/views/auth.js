@@ -6,6 +6,7 @@ import UWBuddiesLogo from 'assets/icons/logo';
 import theme from 'styles/theme';
 import Button from 'components/button';
 import ROUTES from 'lib/routes';
+import InactiveLayout from 'components/inactive-layout';
 
 const learnStyle = {
   position: 'absolute',
@@ -28,28 +29,30 @@ const learnContainerStyle = {
   alignContent: 'center',
   textAlign: 'center',
 };
-function LearnMoreView() {
+function Auth() {
   document.body.style.backgroundColor = theme.colors.gray[0];
 
   const navigate = useNavigate();
-  const onLearnClick = () => navigate(ROUTES.AUTHENTICATE);
+  const onSignUpClick = () => navigate(ROUTES.DASHBOARD); // navigate to third party auth
 
   return (
-    <div style={learnStyle}>
-      <div style={learnContainerStyle}>
-        <UWBuddiesLogo size="200vh" />
-        <div style={learnContentStyle}>
-          Welcome to UW Buddies
-          <br />
-          This is how your data is being used etc etc
-        </div>
-        <Button inline primary onClick={onLearnClick}>
-          Continue
-        </Button>
+    <InactiveLayout>
+      <div style={learnStyle}>
+        <div style={learnContainerStyle}>
+          <UWBuddiesLogo size="200vh" />
+          <div style={learnContentStyle}>
+            This is how auth works
+            <br />
+            what we do with your email
+          </div>
+          <Button inline primary onClick={onSignUpClick}>
+            Sign In / Register
+          </Button>
 
+        </div>
       </div>
-    </div>
+    </InactiveLayout>
   );
 }
 
-export default LearnMoreView;
+export default Auth;

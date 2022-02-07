@@ -28,6 +28,7 @@ export default {
     },
 
     weight: {
+      light: 200,
       normal: 400,
       medium: 500,
       semibold: 600,
@@ -83,8 +84,9 @@ export default {
     '10em',
   ],
   pageLayout: {
-    minWidth: '767px',
-    menuHeight: '60px',
+    minWidth: '50vw',
+    menuHeight: '11vh',
+    maxWidth: '70vw',
   },
   borderRadius: '3px',
   overlayOpacity: '0.7',

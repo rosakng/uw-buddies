@@ -3,23 +3,21 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import StyledDiv from 'components/styled-div';
-import SideMenu from 'components/side-menu';
 import Breadcrumbs from 'components/breadcrumbs';
+import TopMenu from 'components/top-menu';
 
 const Container = styled.div`
-  height: 100%;
+  max-width: ${(props) => props.theme.pageLayout.maxWidth};;
+  min-width: ${(props) => props.theme.pageLayout.minWidth};
   margin-right: auto;
   margin-left: auto;
-  position: fixed;
 `;
 
-function Layout({ children, steps }) {
+function InactiveLayout({ children, steps }) {
   return (
-    <StyledDiv flex>
-      <StyledDiv height="100vh">
-        <SideMenu />
-        {steps && <Breadcrumbs steps={steps} />}
-      </StyledDiv>
+    <StyledDiv paddingBottom={6}>
+      <TopMenu />
+      {steps && <Breadcrumbs steps={steps} />}
       <StyledDiv padding={5}>
         <Container>
           {children}
@@ -29,9 +27,9 @@ function Layout({ children, steps }) {
   );
 }
 
-export default Layout;
+export default InactiveLayout;
 
-Layout.propTypes = {
+InactiveLayout.propTypes = {
   children: PropTypes.node.isRequired,
   steps: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -39,6 +37,6 @@ Layout.propTypes = {
   })),
 };
 
-Layout.defaultProps = {
+InactiveLayout.defaultProps = {
   steps: null,
 };

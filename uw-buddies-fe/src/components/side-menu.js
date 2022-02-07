@@ -1,32 +1,37 @@
-/* eslint-disable */
-
 import React from 'react';
 import styled from 'styled-components';
 
 import ROUTES from 'lib/routes';
 import theme from 'styles/theme';
 
-import StyledDiv from 'components/styled-div';
 import Button from 'components/button';
 import PropTypes from 'prop-types';
 
 import {
-  useResolvedPath, useMatch, Link,
+  useResolvedPath, useMatch, Link, useNavigate,
 } from 'react-router-dom';
 import UWBuddiesLogo from 'assets/icons/logo';
 
-const MenuContainer = styled.header`
-  background: ${(props) => props.theme.colors.blue[2]};
-  borderRadius: '10px';
-`;
-
 const LinksContainer = styled.header`
   background: ${(props) => props.theme.colors.white};
-  borderRadius: '10px';
+`;
+
+const LogoButton = styled.button`
+  border: none;
+  background: ${(props) => props.theme.colors.blue[2]};
+  height: 13vh;
+  width: 15vw;
+  text-decoration: none;
+  transition: none!important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: ${(props) => props.theme.space[10]};
+  border-radius: 10px;
 `;
 
 const matchStyle = {
-  textDecoration: 'underline',
+  textDecoration: 'none',
   color: theme.colors.black,
   padding: theme.space[7],
   fontSize: theme.font.size[6],
@@ -69,44 +74,46 @@ MenuLink.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const titleStyle = {
-  fontWeight: theme.font.weight.semibold,
-  fontSize: theme.font.size[14],
-  color: theme.colors.white,
-};
+const Title = styled.h1`
+  font-weight: ${(props) => props.theme.font.weight.normal};
+  font-size: ${(props) => props.theme.font.size[12]};
+  color: ${(props) => props.theme.colors.white};
+`;
 
 function SideMenu() {
   const currentUser = true; // integrate auth
   const onLogout = () => {};
+  const navigate = useNavigate();
+  const onLogoClick = () => navigate(ROUTES.DASHBOARD);
 
   return (
-    <MenuContainer>
-      <StyledDiv flex alignItems="center" height={100} padding={10}>
+    <div>
+      <LogoButton onClick={onLogoClick}>
         {/* UW BUDDIES LOGO */}
-        <div style={titleStyle}>
+        <Title>
           UW Buddies
-        </div>
+        </Title>
         <UWBuddiesLogo size="40vh" />
-      </StyledDiv>
+      </LogoButton>
       <LinksContainer>
         {/* MENU LINKS */}
         {currentUser && (
-        <div style={{  height: 'calc(100vh - 100px - 44px)'}}>
-          <StyledDiv>
+        <div style={{ height: 'calc(100vh - 13vh - 44px)' }}>
+          <div>
             <MenuLink to={ROUTES.DASHBOARD}>Dashboard</MenuLink>
-          </StyledDiv>
-          <StyledDiv>
-            <MenuLink to={ROUTES.QUESTIONNARE}>Questionnare</MenuLink>
-          </StyledDiv>
-          <StyledDiv>
+          </div>
+          <div>
+            <MenuLink to={ROUTES.QUESTIONNARE}>Questionnaire</MenuLink>
+          </div>
+          <div>
             <MenuLink to={ROUTES.PROFILE}>Profile</MenuLink>
-          </StyledDiv>
-          <StyledDiv>
+          </div>
+          <div>
             <MenuLink to={ROUTES.LEARN}>Events</MenuLink>
-          </StyledDiv>
-          <StyledDiv>
+          </div>
+          <div>
             <MenuLink to={ROUTES.LEARN}>Results</MenuLink>
-          </StyledDiv>
+          </div>
         </div>
         )}
 
@@ -117,7 +124,7 @@ function SideMenu() {
         </div>
         )}
       </LinksContainer>
-    </MenuContainer>
+    </div>
   );
 }
 
