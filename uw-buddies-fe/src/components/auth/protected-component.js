@@ -1,7 +1,8 @@
 import React from 'react';
 import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
 
-// eslint-disable-next-line react/prop-types
+import PropTypes from 'prop-types';
+
 function ProtectedComponent({ component, ...args }) {
   const { user } = useAuth0();
   const Component = withAuthenticationRequired(component);
@@ -11,5 +12,9 @@ function ProtectedComponent({ component, ...args }) {
     ? <Component {...args} />
     : <div>placeholder for verify email page</div>; // TODO redirect to verify email page
 }
+
+ProtectedComponent.propTypes = {
+  component: PropTypes.node.isRequired,
+};
 
 export default ProtectedComponent;
