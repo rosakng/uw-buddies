@@ -1,5 +1,5 @@
 from flask import abort, g
-from flask import request, _request_ctx_stack
+from flask import request
 from flask_restx import Namespace, Resource
 
 from api.auth.helper import requires_auth
