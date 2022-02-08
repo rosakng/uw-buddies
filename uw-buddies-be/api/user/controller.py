@@ -3,7 +3,7 @@ from flask import request, _request_ctx_stack
 from flask_restx import Namespace, Resource
 
 from api.auth.helper import requires_auth
-from api.user.service import get_user, create_user, update_user, get_user_info
+from api.user.service import get_user, create_user, update_user
 
 api = Namespace("User", description="User Operations")
 

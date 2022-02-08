@@ -1,6 +1,8 @@
 from pymongo.collection import Collection, ReturnDocument
-from api.db import db
+from api.db import get_db
 from .model import User
+
+db = get_db()
 
 users: Collection = db.users
 
