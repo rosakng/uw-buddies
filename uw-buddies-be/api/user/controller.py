@@ -1,22 +1,23 @@
-from flask import abort
+from flask import abort, g
 from flask import request
 from flask_restx import Namespace, Resource
 
 from api.auth.helper import requires_auth
-from api.user.service import getUser, createUser, updateUser
+from api.user.service import get_user, create_user, update_user
 
 api = Namespace("User", description="User Operations")
 
 
-@api.route("/<string:user_id>")
+@api.route("/profile")
 class User(Resource):
     method_decorators = [requires_auth]
     """
     Get user object by ID
     """
 
-    def get(self, user_id):
-        user = getUser(user_id)
+    def get(self):
+        authenticated_user = g.request_payload
+        user = get_user(authenticated_user['sub'])
         if user:
             return user, 200
         else:
@@ -26,8 +27,9 @@ class User(Resource):
     Update given fields for user object of given ID
     """
 
-    def put(self, user_id):
-        updated_user = updateUser(user_id, request.get_json())
+    def put(self):
+        authenticated_user = g.request_payload
+        updated_user = update_user(authenticated_user['sub'], request.get_json())
         if updated_user:
             return updated_user, 200
         else:
@@ -36,6 +38,7 @@ class User(Resource):
 
 @api.route("")
 class User(Resource):
+    method_decorators = [requires_auth]
     """
     Create user object
     """
@@ -43,7 +46,7 @@ class User(Resource):
     def post(self):
         body = request.get_json()
         user_id = body['user']['_id']
-        result = createUser(body['user'])
+        result = create_user(body['user'])
         if result:
             return "User with id {user_id} created.".format(user_id=user_id), 201
         else:

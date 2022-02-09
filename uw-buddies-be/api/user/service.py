@@ -1,6 +1,8 @@
 from pymongo.collection import Collection, ReturnDocument
-from api.db import db
+from api.db import get_db
 from .model import User
+
+db = get_db()
 
 users: Collection = db.users
 
@@ -10,7 +12,7 @@ If the user ID does not exist, return None.
 """
 
 
-def getUser(user_id):
+def get_user(user_id):
     user = users.find_one({"_id": user_id})
     if user:
         return User(**user).to_json()
@@ -25,7 +27,7 @@ If a schema error occurs, return None.
 """
 
 
-def createUser(user_obj):
+def create_user(user_obj):
     try:
         user = User(**user_obj)
         user_id = users.insert_one(user.to_bson()).inserted_id
@@ -42,7 +44,7 @@ If an error occurs, return None.
 """
 
 
-def updateUser(user_id, edit_obj):
+def update_user(user_id, edit_obj):
     updated_user = users.find_one_and_update(
         {"_id": user_id},
         {"$set": edit_obj},

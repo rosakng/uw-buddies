@@ -15,11 +15,19 @@ class DevelopmentConfig(BaseConfig):
     DEBUG = True
     MONGO_URI = "mongodb+srv://{username}:{password}@uwbuddiesclustermain.tovpk.mongodb.net/uwbuddies" \
                 "?retryWrites=true&w=majority".format(username=username, password=password)
+    AUTH0_DOMAIN = 'dev-2u1sec9x.us.auth0.com'
+    API_AUDIENCE = "https://uw-buddies-be/api"
+    ALGORITHMS = ["RS256"]
 
 
 class ProductionConfig(BaseConfig):
     CONFIG_NAME = "prod"
     DEBUG = False
+    MONGO_URI = "mongodb+srv://{username}:{password}@uwbuddiesclustermain.tovpk.mongodb.net/uwbuddies" \
+                "?retryWrites=true&w=majority".format(username=username, password=password)
+    AUTH0_DOMAIN = 'dev-2u1sec9x.us.auth0.com'
+    API_AUDIENCE = "https://uw-buddies-be/api"
+    ALGORITHMS = ["RS256"]
 
 
 EXPORT_CONFIGS: List[Type[BaseConfig]] = [
