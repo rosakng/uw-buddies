@@ -1,13 +1,12 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
-import Button from '@mui/material/Button';
-import { styled as muiStyled } from '@mui/material/styles';
 
 import UWBuddiesLogo from 'assets/icons/logo';
 import theme from 'styles/theme';
 import InactiveLayout from 'components/inactive-layout';
 import StyledDiv from 'components/styled-div';
 import styled from 'styled-components';
+import RegisterButton from 'components/auth/register-button';
 
 const Title = styled.h1`
   font-weight: ${(props) => props.theme.font.weight.normal};
@@ -41,16 +40,6 @@ const HomeContainer = styled.div`
   padding-top: ${(props) => props.theme.space[1]};
   padding-bottom: ${(props) => props.theme.space[10]};
 `;
-
-const RegisterButton = muiStyled(Button)(() => ({
-  color: theme.colors.white,
-  backgroundColor: theme.colors.blue[2],
-  '&:hover': {
-    backgroundColor: theme.colors.black,
-  },
-  textTransform: 'capitalize',
-  fontWeight: 'normal',
-}));
 
 function Home() {
   document.body.style.backgroundColor = theme.colors.gray[0];
@@ -146,7 +135,7 @@ function Home() {
       <HomeContainer>
         <Info>Ready to meet your next buddy?</Info>
         <StyledDiv flex justifyContent="center">
-          <RegisterButton onClick={() => {}}>Sign in / Sign up</RegisterButton>
+          <RegisterButton />
         </StyledDiv>
       </HomeContainer>
     </InactiveLayout>
