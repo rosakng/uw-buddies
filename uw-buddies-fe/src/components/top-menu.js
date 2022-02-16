@@ -36,6 +36,15 @@ const LogoButton = styled.button`
   padding-top: ${(props) => props.theme.space[4]};
 `;
 
+const ExternalLink = styled.a`
+  text-decoration: none;
+  color: ${(props) => props.theme.colors.gray[7]};
+  padding-right: ${(props) => props.theme.space[6]};
+  font-size: ${(props) => props.theme.font.size[3]};
+  display: inline-block;
+  width: 100%;
+`;
+
 const matchStyle = {
   textDecoration: 'underline',
   color: theme.colors.black,
@@ -55,9 +64,16 @@ const noMatchStyle = {
   width: '100%',
 };
 
-function MenuLink({ to, children }) {
+function MenuLink({ to, children, external = false }) {
   const resolved = useResolvedPath(to);
   const match = useMatch({ path: resolved.pathname, end: true });
+  if (external) {
+    return (
+      <div>
+        <ExternalLink href={to} target="_blank" rel="noreferrer">FAQ</ExternalLink>
+      </div>
+    );
+  }
   return (
     <div>
       <Link
@@ -73,6 +89,11 @@ function MenuLink({ to, children }) {
 MenuLink.propTypes = {
   to: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  external: PropTypes.bool,
+};
+
+MenuLink.defaultProps = {
+  external: false,
 };
 
 function TopMenu() {
@@ -98,6 +119,9 @@ function TopMenu() {
             </StyledDiv>
             <StyledDiv>
               <MenuLink to={ROUTES.ABOUT}>About Us</MenuLink>
+            </StyledDiv>
+            <StyledDiv>
+              <MenuLink external to={ROUTES.FAQ}>FAQ</MenuLink>
             </StyledDiv>
             <StyledDiv>
               <MenuLink to={ROUTES.CONTACT}>Contact Us</MenuLink>

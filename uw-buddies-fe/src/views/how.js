@@ -1,15 +1,12 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import TeamImg from 'assets/images/team.png';
 
 import theme from 'styles/theme';
-import Button from 'components/button';
-import ROUTES from 'lib/routes';
 import InactiveLayout from 'components/inactive-layout';
 import styled from 'styled-components';
-import { styled as muiStyled } from '@mui/material/styles';
 import StyledDiv from 'components/styled-div';
+import RegisterButton from 'components/auth/register-button';
 
 const Container = styled.div`
   background-color: ${(props) => props.theme.colors.white};
@@ -33,24 +30,10 @@ const Blurb = styled.p`
   font-size: ${(props) => props.theme.font.size[3]};
 `;
 
-const NextButton = muiStyled(Button)(() => ({
-  color: theme.colors.white,
-  backgroundColor: theme.colors.blue[2],
-  '&:hover': {
-    backgroundColor: theme.colors.black,
-  },
-  width: '10vw',
-  textTransform: 'capitalize',
-  fontWeight: 'normal',
-}));
-
 const centerStyle = { display: 'flex', justifyContent: 'center' };
 
 function How() {
   document.body.style.backgroundColor = theme.colors.gray[0];
-
-  const navigate = useNavigate();
-  const onNextClick = () => navigate(ROUTES.PRIVACY);
 
   return (
     <InactiveLayout>
@@ -75,9 +58,7 @@ function How() {
               🤝 Get your match(es) and start a conversation!
             </Blurb>
             <div style={centerStyle}>
-              <NextButton onClick={onNextClick}>
-                Next
-              </NextButton>
+              <RegisterButton onClick={() => {}}>Sign in / Sign up</RegisterButton>
             </div>
           </div>
         </div>

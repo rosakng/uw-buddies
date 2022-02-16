@@ -12,6 +12,7 @@ const StyledButton = muiStyled(Button)(() => ({
   '&:hover': {
     backgroundColor: theme.colors.black,
   },
+  width: '9vw',
   textTransform: 'capitalize',
   fontWeight: 'normal',
 }));
