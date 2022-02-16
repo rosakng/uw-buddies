@@ -4,15 +4,15 @@ import {
   useResolvedPath, useMatch, Link, useNavigate,
 } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '@mui/material/Button';
-import { styled as muiStyled } from '@mui/material/styles';
 
 import ROUTES from 'lib/routes';
 import theme from 'styles/theme';
 
 import StyledDiv from 'components/styled-div';
-
 import UWBuddiesLogo from 'assets/icons/logo';
+import RegisterButton from './auth/register-button';
+
+// import LoginButton from './auth/login-button';
 
 const MenuContainer = styled.header`
   height: ${(props) => props.theme.pageLayout.menuHeight};
@@ -20,16 +20,6 @@ const MenuContainer = styled.header`
   padding-left: ${(props) => props.theme.space[3]};
   padding-right: ${(props) => props.theme.space[3]};
 `;
-
-const RegisterButton = muiStyled(Button)(() => ({
-  color: theme.colors.white,
-  backgroundColor: theme.colors.blue[2],
-  '&:hover': {
-    backgroundColor: theme.colors.black,
-  },
-  textTransform: 'capitalize',
-  fontWeight: 'normal',
-}));
 
 const Title = styled.h1`
   font-weight: ${(props) => props.theme.font.weight.semibold};
@@ -113,7 +103,7 @@ function TopMenu() {
               <MenuLink to={ROUTES.CONTACT}>Contact Us</MenuLink>
             </StyledDiv>
           </StyledDiv>
-          <RegisterButton onClick={() => {}}>Sign in / Sign up</RegisterButton>
+          <RegisterButton />
         </StyledDiv>
       </StyledDiv>
     </MenuContainer>
