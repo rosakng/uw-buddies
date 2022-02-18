@@ -2,7 +2,6 @@ const ROUTES = {
   HOME: '/home',
   LEARN: '/learn',
   HOW: '/how',
-  PRIVACY: '/privacy',
   ABOUT: '/about',
   CONTACT: '/contact',
   AUTHENTICATE: '/authenticate',
@@ -11,6 +10,7 @@ const ROUTES = {
   PROFILE: '/profile',
   EVENTS: '/events',
   RESULTS: '/results',
+  FAQ: 'https://docs.google.com/document/d/17MAaQNJpouoA0WA9IZcjq8RcKnQ1xE14ZiNQs3iSkoU/',
 };
 
 export default ROUTES;
