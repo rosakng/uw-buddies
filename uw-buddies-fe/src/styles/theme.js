@@ -29,7 +29,7 @@ export default {
 
     weight: {
       light: 200,
-      normal: 400,
+      normal: 350,
       medium: 500,
       semibold: 600,
     },

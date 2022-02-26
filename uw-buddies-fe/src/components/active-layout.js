@@ -20,7 +20,7 @@ function ActiveLayout({ children }) {
       <StyledDiv height="100vh" paddingRight={12}>
         <SideMenu />
       </StyledDiv>
-      <StyledDiv padding={5}>
+      <StyledDiv padding={5} width="100vw">
         <Container>
           {children}
         </Container>
