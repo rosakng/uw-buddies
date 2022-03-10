@@ -6,6 +6,18 @@ from typing import List, Optional
 Define user collection schema persisted in Mongo
 """
 
+class Match(BaseModel):
+    name: str
+    matchBasis: str
+    program: str
+    term: str
+    interests: str
+    instagram: str
+    facebook: str
+    email: str
+    contactInfoRevealed: bool
+    reachedOut: bool
+
 
 class Education(BaseModel):
     faculty: str
@@ -89,6 +101,7 @@ class User(BaseModel):
     opted_in: bool
     education: Education
     questionnaire: Questionnaire
+    matches: Optional[List[Match]]
 
     def to_json(self):
         return jsonable_encoder(self, exclude_none=True)
