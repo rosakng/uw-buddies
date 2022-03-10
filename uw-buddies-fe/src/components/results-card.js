@@ -12,7 +12,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import Button from '../components/button';
 
 function ResultsCard(props) {
-  const [reveal, toggleReveal] = useState(false)
+  const [reveal, toggleReveal] = useState(props.contactInfoRevealed)
 
   return (
     <Card sx={{marginBottom: '20px'}}>
@@ -40,29 +40,37 @@ function ResultsCard(props) {
               </Box>
             </Box>
             {reveal ? 
-              <Box sx={{ width: '20%', marginRight: '30px', alignSelf: 'center'}}> 
+              <Box sx={{display: 'flex', width: '50%', alignSelf: 'center', flexDirection: 'row'}}> 
+              <Box sx={{marginRight: '30px', width: '200px'}}>
                 <Box sx={{display:'flex', flexDirection: 'row', marginBottom:'10px'}}>
-                  <InstagramIcon/> &nbsp;
-                  <Typography sx={{alignSelf: 'flex-end'}} variant="subtitle2" color="text.secondary" component="div">
-                    {props.instagram}
-                  </Typography>
+                    <InstagramIcon/> &nbsp;
+                    <Typography sx={{alignSelf: 'flex-end'}} variant="subtitle2" color="text.secondary" component="div">
+                      {props.instagram}
+                    </Typography>
+                  </Box>
+                  <Box sx={{display:'flex', flexDirection: 'row', marginBottom:'10px'}}>
+                    <FacebookIcon/> &nbsp;
+                    <Typography sx={{alignSelf: 'flex-end'}} variant="subtitle2" color="text.secondary" component="div">
+                      {props.facebook}
+                    </Typography>
+                  </Box>
+                  <Box sx={{display:'flex', flexDirection: 'row', marginBottom:'10px'}}>
+                    <MailIcon/> &nbsp;
+                    <Typography sx={{alignSelf: 'flex-end'}} variant="subtitle2" color="text.secondary" component="div">
+                      {props.email}
+                    </Typography>
+                  </Box>
                 </Box>
-                <Box sx={{display:'flex', flexDirection: 'row', marginBottom:'10px'}}>
-                  <FacebookIcon/> &nbsp;
-                  <Typography sx={{alignSelf: 'flex-end'}} variant="subtitle2" color="text.secondary" component="div">
-                    {props.facebook}
-                  </Typography>
-                </Box>
-                <Box sx={{display:'flex', flexDirection: 'row', marginBottom:'10px'}}>
-                  <MailIcon/> &nbsp;
-                  <Typography sx={{alignSelf: 'flex-end'}} variant="subtitle2" color="text.secondary" component="div">
-                    {props.email}
-                  </Typography>
+                <Box sx={{width: '150px', display:'flex', flexDirection: 'column', marginBottom:'10px', backgroundColor:'#6177ef', color: 'white'}}>
+                  <Typography sx={{alignSelf: 'center', marginTop: '20px'}} variant="subtitle2" component="div">
+                      Reached Out?
+                    </Typography>
+                  <Checkbox defaultChecked={props.reachedOut} sx={{paddingTop: '0px', color: 'white', '&.Mui-checked': {color: 'white'}}}/>
                 </Box>
               </Box>
           : 
           
-              <Box sx={{ width: '20%', marginRight: '30px'}}>
+              <Box sx={{ width: '50%'}}>
                 <Button onClick={() => toggleReveal(true)} primary full>
                   Click to Reveal
                 </Button>

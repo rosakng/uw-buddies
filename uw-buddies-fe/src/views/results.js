@@ -17,7 +17,9 @@ const matches = [
         interests: 'hockey, eating, running',
         instagram: 'bill',
         facebook: 'fb.com/bill',
-        email: 'bill@uwaterloo.ca'
+        email: 'bill@uwaterloo.ca',
+        contactInfoRevealed: true,
+        reachedOut: true
     },
     {
         name: 'Varoon Gupta',
@@ -27,7 +29,9 @@ const matches = [
         interests: 'basketball, hiking',
         instagram: 'varoon',
         facebook: 'fb.com/varoon',
-        email: 'varoon@uwaterloo.ca'
+        email: 'varoon@uwaterloo.ca',
+        contactInfoRevealed: false,
+        reachedOut: false
     }
 ]
 
