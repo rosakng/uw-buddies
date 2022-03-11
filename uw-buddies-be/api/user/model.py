@@ -24,7 +24,6 @@ class Education(BaseModel):
     faculty: str
     program: str
     term: str
-    stream: int
     current_coop_status: str
 
 

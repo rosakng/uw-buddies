@@ -61,7 +61,6 @@ If successful, updated user object will be returned.
 If an error occurs, return None.
 """
 def update_user_match(user_id, edit_obj):
-    print(edit_obj)
     updated_user = users.find_one_and_update(
         {"_id": user_id, "matches.email": edit_obj['matchEmail']},
         {"$set": edit_obj['updateObject']},
@@ -70,6 +69,19 @@ def update_user_match(user_id, edit_obj):
 
     if updated_user:
         return User(**updated_user).to_json()
+    else:
+        return None
+
+"""
+Get all users in the users table.
+If successful, returns list of user objects.
+If an error occurs, return None.
+"""
+def get_all_users():
+    all_users = users.find()
+
+    if all_users:
+        return [User(**user).to_json() for user in all_users]
     else:
         return None
 
