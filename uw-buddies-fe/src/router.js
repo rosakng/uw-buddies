@@ -11,6 +11,7 @@ import LearnMore from 'views/learn-more';
 import Home from 'views/home';
 import Dashboard from 'views/dashboard';
 import Profile from 'views/profile';
+import Results from 'views/results';
 import Questionnaire from 'views/questionnaire';
 import Auth from 'views/auth';
 import App from 'App';
@@ -47,6 +48,11 @@ export default function UWBuddiesRouter() {
                 exact
                 path={ROUTES.PROFILE}
                 element={<ProtectedComponent component={Profile} />}
+              />
+              <Route
+                exact
+                path={ROUTES.RESULTS}
+                element={<ProtectedComponent component={Results} />}
               />
               {/* TODO: Figure out routes */}
               <Route exact path="/" element={<Home />} />

@@ -10,6 +10,8 @@ const Container = styled.div`
   margin-right: auto;
   margin-left: auto;
   position: fixed;
+  width: 80%;
+  padding-right: 20%;
 `;
 
 function ActiveLayout({ children }) {

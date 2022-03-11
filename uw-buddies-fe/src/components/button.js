@@ -95,6 +95,12 @@ const Button = styled.button`
     min-width: 0px;
     color: ${props.theme.colors.blue[0]};
   `}
+
+  ${(props) => props.full && `
+  height: 100%;
+  width: 100%;
+  right: 0;
+`}
 `;
 
 export default Button;

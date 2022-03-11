@@ -116,7 +116,7 @@ function SideMenu() {
             <MenuLink to={ROUTES.LEARN}>Events</MenuLink>
           </div>
           <div>
-            <MenuLink to={ROUTES.LEARN}>Results</MenuLink>
+            <MenuLink to={ROUTES.RESULTS}>Results</MenuLink>
           </div>
         </div>
         )}
