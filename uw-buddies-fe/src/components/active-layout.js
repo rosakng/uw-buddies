@@ -14,7 +14,7 @@ const Container = styled.div`
 const SideMenuDiv = styled.div`
   height: 100%;
   position: fixed;
-  width: 80%;
+  width: 35vw;
   padding-right: 20%;
 `;
 
