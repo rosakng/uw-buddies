@@ -7,7 +7,7 @@ const surveyJson = {
         {
           name: 'year_of_study',
           type: 'checkbox',
-          isRequired: false,
+          isRequired: true,
           hideNumber: true,
           choices: ['1A/1B', '2A/2B', '3A/3B', '4A/4B', 'Undergraduate Year 4C+ or above', 'Masters', 'Doctorial'],
           title: 'My year of study at UWaterloo is:',
@@ -16,7 +16,7 @@ const surveyJson = {
           type: 'dropdown',
           name: 'program',
           choices: ['Accounting and Financial Management', 'Actuarial Science', 'Anthropology', 'Applied Mathematics', 'Architectural Engineering', 'Architecture', 'Bachelor of Arts', 'Bachelor of Science', 'Biochemistry', 'Biology', 'Biomedical Engineering', 'Biomedical Sciences', 'Biostatistics', 'Biotechnology/Chartered Professional Accountancy', 'Business Administration (Laurier) and Computer Science (Waterloo) Double Degree', 'Business Administration (Laurier) and Mathematics (Waterloo) Double Degree', 'Business programs', 'Chemical Engineering', 'Chemistry', 'Civil Engineering', 'Classical Studies (2 majors available)', 'Climate and Environmental Change', 'Co-op programs', 'Combinatorics and Optimization', 'Communication Studies', 'Computational Mathematics', 'Computer Engineering', 'Computer Science', 'Computing and Financial Management', 'Data Science', 'Earth Sciences', 'Economics', 'Education (teaching)', 'Electrical Engineering', 'English (3 majors available)', 'Environment and Business', 'Environment, Resources and Sustainability', 'Environmental Engineering', 'Environmental programs at a glance', 'Environmental Science', 'Fine Arts (2 majors available)', 'French', 'Gender and Social Justice', 'Geography and Aviation', 'Geography and Environmental Management', 'Geological Engineering', 'Geomatics', 'German', 'Global Business and Digital Arts', 'Health Sciences', 'History', 'Honours Arts (29 majors available)', 'Honours Arts and Business (29 majors available)', 'Honours Science', 'Information Technology Management', 'International Development', 'Kinesiology', 'Knowledge Integration', 'Legal Studies', 'Liberal Studies', 'Life Physics', 'Life Sciences (4 majors available)', 'Management Engineering', 'Materials and Nanosciences', 'Mathematical Economics', 'Mathematical Finance', 'Mathematical Optimization', 'Mathematical Physics', 'Mathematics (14 majors available)', 'Mathematics/Business Administration', 'Mathematics/Chartered Professional Accountancy', 'Mathematics/Financial Analysis and Risk Management', 'Mathematics/Teaching', 'Mechanical Engineering', 'Mechatronics Engineering', 'Medicinal Chemistry', 'Medieval Studies', 'Minors and specializations', 'Music', 'Nanotechnology Engineering', 'Nursing', 'Optometry', 'Pathways to medical school and other health professions', 'Peace and Conflict Studies', 'Pharmacy', 'Philosophy', 'Physical Sciences (8 majors available)', 'Physics', 'Physics and Astronomy', 'Planning', 'Political Science', 'Pre-law', 'Psychology – Bachelor of Arts', 'Psychology – Bachelor of Science', 'Public Health', 'Pure Mathematics', 'Recreation and Leisure Studies', 'Recreation and Sport Business', 'Religious Studies', 'Science and Aviation', 'Science and Business', 'Sexuality, Marriage, and Family Studies', 'Social Development Studies', 'Social Work', 'Sociology', 'Software Engineering', 'Spanish', 'Statistics', 'Sustainability and Financial Management', 'Systems Design Engineering', 'Teaching', 'Theatre and Performance', 'Therapeutic Recreation'],
-          isRequired: false,
+          isRequired: true,
           hideNumber: true,
           title: 'My Program at UWaterloo is:',
         },
@@ -33,7 +33,7 @@ const surveyJson = {
           name: 'similar_interests',
           title: 'Having similar interests matter to me when making a new friend',
           hideNumber: true,
-          isRequired: false,
+          isRequired: true,
           mininumRateDescription: 'Does not matter at all',
           maximumRateDescription: 'Matters a lot',
         },
@@ -42,7 +42,7 @@ const surveyJson = {
           name: 'compatibile_personality_type',
           title: 'Having a compatible personality type matters to me when making a new friend',
           hideNumber: true,
-          isRequired: false,
+          isRequired: true,
           mininumRateDescription: 'Does not matter at all',
           maximumRateDescription: 'Matters a lot',
         },
@@ -51,7 +51,7 @@ const surveyJson = {
           name: 'same_program',
           title: 'Being in the same program matters to me when making a new friend',
           hideNumber: true,
-          isRequired: false,
+          isRequired: true,
           mininumRateDescription: 'Does not matter at all',
           maximumRateDescription: 'Matters a lot',
         },
@@ -60,7 +60,7 @@ const surveyJson = {
           name: 'same_faculty',
           title: 'Being in the same faculty matters to me when making a new friend',
           hideNumber: true,
-          isRequired: false,
+          isRequired: true,
           mininumRateDescription: 'Does not matter at all',
           maximumRateDescription: 'Matters a lot',
         },
@@ -69,7 +69,7 @@ const surveyJson = {
           name: 'same_term',
           title: 'Being in the same term matters to me when making a new friend',
           hideNumber: true,
-          isRequired: false,
+          isRequired: true,
           mininumRateDescription: 'Does not matter at all',
           maximumRateDescription: 'Matters a lot',
         },
@@ -92,7 +92,7 @@ const surveyJson = {
               title: 'Creativity',
               colCount: 5,
               choices: ['Art', 'Design', 'Make-up', 'Photography', 'Writing', 'Singing', 'Dancing', 'Crafts', 'Making Content'],
-              isRequired: false,
+              isRequired: true,
             },
             {
               name: 'Fitness',
@@ -100,7 +100,7 @@ const surveyJson = {
               title: 'Fitness',
               colCount: 5,
               choices: ['Badminton', 'Cycling', 'Gym', 'HIIT', 'Hiking', 'Horse riding', 'Pilates', 'Rock climbing', 'Roller blading', 'Running', 'Skateboarding', 'Skiing', 'Snowboarding', 'Spin', 'Surfing', 'Swimming', 'Walking', 'Yoga'],
-              isRequired: false,
+              isRequired: true,
             },
             {
               name: 'Food',
@@ -108,7 +108,7 @@ const surveyJson = {
               title: 'Food',
               colCount: 5,
               choices: ['Vegan', 'Pizza', 'Vegetarian', 'Foodie', 'Sweet tooth', 'Baking', 'Brunch', 'Cooking', 'Eating out', 'Health foods', 'Sushi'],
-              isRequired: false,
+              isRequired: true,
             },
           ],
         },
@@ -131,7 +131,7 @@ const surveyJson = {
               title: 'Going Out',
               colCount: 5,
               choices: ['Concerts', 'Stand up', 'Festivals', 'Museums & galleries', 'Theatre', 'Nightclubs', 'Bars', 'Book clubs', 'Cinema', 'Nature', 'Picnics', 'Coffee chats', 'Karaoke'],
-              isRequired: false,
+              isRequired: true,
             },
             {
               name: 'Movies',
@@ -139,7 +139,7 @@ const surveyJson = {
               title: 'Movies',
               colCount: 5,
               choices: ['Comedy', 'Drama', 'Horror', 'Fantasy', 'Sci-fi', 'Rom-com', 'Bollywood', 'Indie', 'Action', 'K-drama'],
-              isRequired: false,
+              isRequired: true,
             },
             {
               name: 'Music',
@@ -147,7 +147,7 @@ const surveyJson = {
               title: 'Music',
               colCount: 5,
               choices: ['Hip hop', 'Rock', 'Electronic', 'R&B', 'Classical', 'Country', 'Jazz', 'Soul', 'Folk & acoustic', 'Afro', 'Arab', 'Reggae', 'Metal', 'Blues', 'Punk', 'Latin', 'Funk', 'Pop', 'Techno', 'House', 'Rap', 'Indie', '80s', '90s', '00s'],
-              isRequired: false,
+              isRequired: true,
             },
           ],
         },
@@ -170,7 +170,7 @@ const surveyJson = {
               title: 'Pets',
               colCount: 5,
               choices: ['Dogs', 'Cats', 'Rabbits', 'Birds', 'Snakes', 'Lizards', 'Turtles', 'Fish', 'Hamsters', 'Horses', 'Turtles'],
-              isRequired: false,
+              isRequired: true,
             },
             {
               name: 'Sports',
@@ -178,7 +178,7 @@ const surveyJson = {
               title: 'Sports',
               colCount: 5,
               choices: ['Soccer', 'Tennis', 'Basketball', 'Hockey', 'Volleyball', 'Ping pong', 'Golf', 'Rugby', 'Boxing', 'Rowing', 'Martial arts', 'Gymnastics', 'Bowling', 'Go karting', 'Football', 'Athletics', 'Baseball', 'Handball', 'Curling'],
-              isRequired: false,
+              isRequired: true,
             },
             {
               name: 'Staying In',
@@ -186,7 +186,7 @@ const surveyJson = {
               title: 'Staying In',
               colCount: 5,
               choices: ['Board games', 'Gardening', 'Cooking', 'Takeout', 'Gaming', 'TV', 'Movie nights', 'Reading'],
-              isRequired: false,
+              isRequired: true,
             },
           ],
         },
@@ -209,7 +209,7 @@ const surveyJson = {
               title: 'Travelling',
               colCount: 5,
               choices: ['Beaches', 'Winter sports', 'Camping', 'Backpacking', 'Hiking trips', 'Road trips', 'City breaks', 'Staycations', 'Fishing trips'],
-              isRequired: false,
+              isRequired: true,
             },
             {
               name: 'Wellness',
@@ -217,7 +217,7 @@ const surveyJson = {
               title: 'Wellness',
               colCount: 5,
               choices: ['Aromatherapy', 'ASMR', 'Meditation', 'Nature', 'Organic', 'Plants', 'Self care', 'Spa weekends', 'Yoga', 'Journaling'],
-              isRequired: false,
+              isRequired: true,
             },
           ],
         },
@@ -233,8 +233,8 @@ const surveyJson = {
           type: 'matrix',
           name: '1',
           title: 'Please indicate if you agree or disagree with the following statements',
-          hideNumber: true,
-          isRequired: false,
+          hideNumber: false,
+          isAllRowRequired: true,
           columns: [
             {
               value: 1,
@@ -309,7 +309,7 @@ const surveyJson = {
           name: '2',
           title: 'Please indicate if you agree or disagree with the following statements',
           hideNumber: true,
-          isRequired: false,
+          isAllRowRequired: true,
           columns: [
             {
               value: 1,
@@ -384,7 +384,7 @@ const surveyJson = {
           name: '2',
           title: 'Please indicate if you agree or disagree with the following statements',
           hideNumber: true,
-          isRequired: false,
+          isAllRowRequired: true,
           columns: [
             {
               value: 1,
@@ -459,7 +459,7 @@ const surveyJson = {
           name: '2',
           title: 'Please indicate if you agree or disagree with the following statements',
           hideNumber: true,
-          isRequired: false,
+          isAllRowRequired: true,
           columns: [
             {
               value: 1,
@@ -534,7 +534,7 @@ const surveyJson = {
           name: '2',
           title: 'Please indicate if you agree or disagree with the following statements',
           hideNumber: true,
-          isRequired: false,
+          isAllRowRequired: true,
           columns: [
             {
               value: 1,
@@ -602,7 +602,6 @@ const surveyJson = {
     },
   ],
   showProgressBar: 'top',
-  // progressBarType: 'buttons',
   completedHtml: 'Thanks for participating in UW Buddies. <br /><br /> Stay tuned for your match results!',
 };
 
