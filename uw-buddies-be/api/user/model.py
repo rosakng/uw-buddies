@@ -11,7 +11,7 @@ class Match(BaseModel):
     matchBasis: str
     program: str
     term: str
-    stream: int
+    current_coop_status: str
     interests: str
     instagram: Optional[str]
     facebook: Optional[str]
@@ -25,6 +25,7 @@ class Education(BaseModel):
     program: str
     term: str
     stream: int
+    current_coop_status: str
 
 
 class Scoring(BaseModel):
@@ -33,6 +34,7 @@ class Scoring(BaseModel):
     program: int
     faculty: int
     term: int
+    current_coop_status: int
 
 
 class Compatibility(BaseModel):
@@ -86,7 +88,6 @@ class Compatibility(BaseModel):
     exacting_in_my_work: Optional[int]
     often_feel_blue: Optional[int]
     full_of_ideas: Optional[int]
-
 
 
 class Questionnaire(BaseModel):
