@@ -11,6 +11,7 @@ class Match(BaseModel):
     matchBasis: str
     program: str
     term: str
+    stream: int
     interests: str
     instagram: Optional[str]
     facebook: Optional[str]
@@ -23,6 +24,7 @@ class Education(BaseModel):
     faculty: str
     program: str
     term: str
+    stream: int
 
 
 class Scoring(BaseModel):
