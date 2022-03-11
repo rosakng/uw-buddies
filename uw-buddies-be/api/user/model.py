@@ -12,8 +12,8 @@ class Match(BaseModel):
     program: str
     term: str
     interests: str
-    instagram: str
-    facebook: str
+    instagram: Optional[str]
+    facebook: Optional[str]
     email: str
     contactInfoRevealed: bool
     reachedOut: bool

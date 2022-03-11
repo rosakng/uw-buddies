@@ -54,3 +54,22 @@ def update_user(user_id, edit_obj):
         return User(**updated_user).to_json()
     else:
         return None
+
+"""
+Given a user ID and data regarding the match object to be updated, update the match object for the user in Mongo.
+If successful, updated user object will be returned.
+If an error occurs, return None.
+"""
+def update_user_match(user_id, edit_obj):
+    print(edit_obj)
+    updated_user = users.find_one_and_update(
+        {"_id": user_id, "matches.email": edit_obj['matchEmail']},
+        {"$set": edit_obj['updateObject']},
+        return_document=ReturnDocument.AFTER
+    )
+
+    if updated_user:
+        return User(**updated_user).to_json()
+    else:
+        return None
+
