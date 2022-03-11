@@ -1,0 +1,115 @@
+.sv-question__title {
+    font-size: 1em;
+}
+.sv-page__title {
+    margin: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.875em;
+    padding-left: 0.2em;
+}
+.sv-row:not(:last-child) {
+    padding-bottom: 2em;
+}
+
+.sv-footer {
+    min-height: 2em;
+    padding: 1em 0 0.87em 0;
+}
+
+.sv_progress-buttons__container-center {
+    text-align: center;
+    width: 70vw;
+}
+
+.sv-matrix__cell {
+    min-width: 5em;
+    text-align: center;
+}
+
+@media only screen and (min-width: 1000px) {
+    .sv-completedpage {
+        margin-right: 0;
+        margin-left: 0;
+        background-color: transparent !important;
+        font-family: sans-serif;
+        font-weight: normal;
+        font-size: 1.875em;
+        padding-top: 0rem;
+        padding-bottom: 4.5em;
+        box-sizing: border-box;
+        text-align: left;
+    }
+}
+
+.sv-completedpage:before {
+    display: block;
+    width: 72px;
+    height: 72px;
+    margin-left: calc(50% - 36px);
+    content: "";
+    background-image: none;
+}
+
+.sv_progress-buttons__list-container .sv_progress-buttons__list li::before {
+    border: 3px solid rgb(97, 119, 239) !important;
+    background-color: white !important;
+}
+
+.sv_progress-buttons__list-container .sv_progress-buttons__list li::after {
+    background-color: rgb(97, 119, 239) !important;
+}
+
+.sv_progress-buttons__list-container .sv_progress-buttons__list li.sv_progress-buttons__list-element--current::before {
+    border-color: rgb(97, 119, 239) !important;
+    background-color: white;
+}
+
+.sv_progress-buttons__list-container .sv_progress-buttons__list li.sv_progress-buttons__list-element--passed::before {
+    border-color: rgb(97, 119, 239) !important;
+    background-color: rgb(97, 119, 239) !important;
+}
+
+.sv_progress-buttons__list-container 
+.sv_progress-buttons__list li.sv_progress-buttons__list-element--passed + li::after {
+    background-color: rgb(97, 119, 239) !important;
+}
+
+.sv-root-modern .sv_progress-buttons__list li.sv_progress-buttons__list-element--passed + li::after {
+    background-color: rgb(97, 119, 239) !important;
+}
+
+.sv-selectbase__label {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    cursor: inherit;
+    margin-left: 41px;
+    min-height: 30px;
+    text-align: left;
+}
+
+.sv_qstn .sv-q-column-2, .sv-question .sv-q-column-2 {
+    max-width: 50%;
+    display: inline-block;
+    padding-right: 5em !important;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+.sv-rating__item-text {
+    min-width: 2.3125em;
+    height: 2.3125em;
+    display: inline-block;
+    color: #9f9f9f;
+    padding: 0 1em;
+    border: solid 0.1875em #9f9f9f;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.13;
+    cursor: pointer;
+    margin: 3px 0;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    -sizing: border-box;
+}
