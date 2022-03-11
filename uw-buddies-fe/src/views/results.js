@@ -1,47 +1,40 @@
 /* eslint-disable prefer-destructuring */
-/* eslint-disable */
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from 'react';
 
 import ActiveLayout from 'components/active-layout';
 import theme from 'styles/theme';
 import styled from 'styled-components';
-import ResultsCard from '../components/results-card'
+import ResultsCard from '../components/results-card';
 
 // Test matches
 const matches = [
-    {
-        name: 'Bill Sheng',
-        matchBasis: 'interests',
-        program: 'MGTE',
-        term: '4B',
-        interests: 'hockey, eating, running',
-        instagram: 'bill',
-        facebook: 'fb.com/bill',
-        email: 'bill@uwaterloo.ca',
-        contactInfoRevealed: true,
-        reachedOut: true
-    },
-    {
-        name: 'Varoon Gupta',
-        matchBasis: 'personality',
-        program: 'CS',
-        term: '3B',
-        interests: 'basketball, hiking',
-        instagram: 'varoon',
-        facebook: 'fb.com/varoon',
-        email: 'varoon@uwaterloo.ca',
-        contactInfoRevealed: false,
-        reachedOut: false
-    }
-]
+  {
+    name: 'Bill Sheng',
+    matchBasis: 'interests',
+    program: 'MGTE',
+    term: '4B',
+    interests: 'hockey, eating, running',
+    instagram: 'bill',
+    email: 'bill@uwaterloo.ca',
+    contactInfoRevealed: true,
+    reachedOut: true,
+  },
+  {
+    name: 'Varoon Gupta',
+    matchBasis: 'personality',
+    program: 'CS',
+    term: '3B',
+    interests: 'basketball, hiking',
+    facebook: 'fb.com/varoon',
+    email: 'varoon@uwaterloo.ca',
+    contactInfoRevealed: false,
+    reachedOut: false,
+  },
+];
 
 const Title = styled.h1`
-  font-weight: ${(props) => props.theme.font.weight.normal};
-  font-size: ${(props) => props.theme.font.size[13]};
-  color: ${(props) => props.theme.colors.black};
-`;
-
-const CenteredTitle = styled.h1`
   font-weight: ${(props) => props.theme.font.weight.normal};
   font-size: ${(props) => props.theme.font.size[13]};
   color: ${(props) => props.theme.colors.black};
@@ -62,33 +55,29 @@ const Blurb = styled.p`
   text-align: center;
 `;
 
-
-
 function Results() {
   document.body.style.backgroundColor = theme.colors.gray[0];
 
   return (
     <ActiveLayout>
-        {matches.length > 0 ? (
+      {matches.length > 0 ? (
         <div>
-            <Title>Results</Title>
-            {
-                matches.map((match, idx) => {
-                    return <ResultsCard key={idx} {...match}/>
-                })
+          <Title>Results</Title>
+          {
+                matches.map((match) => <ResultsCard {...match} />)
             }
         </div>
-        )
-        : 
-        <div>
-                    <Subtitle>
-            Your buddies will be presented here
-        </Subtitle>
-        <Blurb>
-            Come back next Match Monday to view your matches
-        </Blurb>
-        </div>
-        }
+      )
+        : (
+          <div>
+            <Subtitle>
+              Your buddies will be presented here
+            </Subtitle>
+            <Blurb>
+              Come back next Match Monday to view your matches
+            </Blurb>
+          </div>
+        )}
     </ActiveLayout>
   );
 }
