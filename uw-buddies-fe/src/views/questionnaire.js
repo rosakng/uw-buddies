@@ -62,7 +62,6 @@ function Questionnaire() {
       </>
     );
   }
-
   return (
     <ActiveLayout>
       <Title>Questionnaire</Title>

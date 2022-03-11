@@ -7,8 +7,12 @@ import SideMenu from 'components/side-menu';
 
 const Container = styled.div`
   height: 100%;
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: 10vw;
+  margin-left: 25vw;
+`;
+
+const SideMenuDiv = styled.div`
+  height: 100%;
   position: fixed;
   width: 80%;
   padding-right: 20%;
@@ -17,9 +21,9 @@ const Container = styled.div`
 function ActiveLayout({ children }) {
   return (
     <StyledDiv flex>
-      <StyledDiv height="100vh" paddingRight={12}>
+      <SideMenuDiv>
         <SideMenu />
-      </StyledDiv>
+      </SideMenuDiv>
       <StyledDiv padding={5} width="100vw">
         <Container>
           {children}

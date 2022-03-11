@@ -51,7 +51,7 @@ function How() {
               personality type, and interests
             </Blurb>
             <Blurb>
-              ❄️ Chill out while others in your cohort fill out the quiestionnaire
+              ❄️ Chill out while others in your cohort fill out the questionnaire
               and our system finds you your next buddy
             </Blurb>
             <Blurb>

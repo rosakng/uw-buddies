@@ -1,6 +1,12 @@
 .sv-question__title {
     font-size: 1em;
 }
+.sv-page__title {
+    margin: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.875em;
+    padding-left: 0.2em;
+}
 .sv-row:not(:last-child) {
     padding-bottom: 2em;
 }
