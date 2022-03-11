@@ -2,8 +2,11 @@
 import React from 'react';
 
 import UWBuddiesLogo from 'assets/icons/logo';
+import ROUTES from 'lib/routes';
 import theme from 'styles/theme';
 import InactiveLayout from 'components/inactive-layout';
+import Button from 'components/button';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const learnStyle = {
   position: 'absolute',
@@ -27,8 +30,17 @@ const learnContainerStyle = {
   alignContent: 'center',
   textAlign: 'center',
 };
+const logoutStyle = {
+  alignItems: 'center',
+  bottom: '0',
+};
+
 function EmailVerificationRequired() {
   document.body.style.backgroundColor = theme.colors.gray[0];
+  const { user, logout } = useAuth0();
+  const onLogout = () => {
+    logout({ returnTo: `${window.location.origin}${ROUTES.HOME}` });
+  };
 
   // navigate to third party auth which will redirect to ROUTES.dashboard once user is authenticated
 
@@ -40,6 +52,12 @@ function EmailVerificationRequired() {
           <div style={learnContentStyle}>
             Please verify your email to proceed to UW Buddies!
           </div>
+          {/* LOGOUT */}
+          {user && (
+          <div style={logoutStyle}>
+            {user && <Button inverse onClick={onLogout}>Logout</Button>}
+          </div>
+          )}
         </div>
       </div>
     </InactiveLayout>
