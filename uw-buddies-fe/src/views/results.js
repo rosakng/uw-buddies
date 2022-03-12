@@ -1,40 +1,14 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable */
 
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ActiveLayout from 'components/active-layout';
 import theme from 'styles/theme';
 import styled from 'styled-components';
-import ResultsCard from '../components/results-card';
 import axios from 'axios';
-import {useAuth0} from '@auth0/auth0-react';
-
-// Test matches
-const matches = [
-  {
-    name: 'Bill Sheng',
-    matchBasis: 'interests',
-    program: 'MGTE',
-    term: '4B',
-    interests: 'hockey, eating, running',
-    instagram: 'bill',
-    email: 'bill@uwaterloo.ca',
-    contactInfoRevealed: true,
-    reachedOut: true,
-  },
-  {
-    name: 'Varoon Gupta',
-    matchBasis: 'personality',
-    program: 'CS',
-    term: '3B',
-    interests: 'basketball, hiking',
-    facebook: 'fb.com/varoon',
-    email: 'varoon@uwaterloo.ca',
-    contactInfoRevealed: false,
-    reachedOut: false,
-  },
-];
+import { useAuth0 } from '@auth0/auth0-react';
+import ResultsCard from '../components/results-card';
 
 const Title = styled.h1`
   font-weight: ${(props) => props.theme.font.weight.normal};
@@ -58,22 +32,27 @@ const Blurb = styled.p`
 `;
 
 function Results() {
-  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-  const [dbUser, setDbUser] = useState('');
+  const [matches, setMatches] = useState([]);
+  const navigate = useNavigate();
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0();
 
-  useEffect(async() => {
-    const token = await getAccessTokenSilently()
+  useEffect(async () => {
+    if (!isAuthenticated) {
+      navigate('/dashboard');
+    }
+
+    const token = await getAccessTokenSilently();
 
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get('http://192.168.2.88:5000/api/user/profile', {
           headers: {
-            'Authorization': `Bearer ${token}`,
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
-        setDbUser(response);
+        setMatches(response.matches);
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     };
 
