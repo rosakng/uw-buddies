@@ -1,12 +1,14 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable */
 
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import ActiveLayout from 'components/active-layout';
 import theme from 'styles/theme';
 import styled from 'styled-components';
 import ResultsCard from '../components/results-card';
+import axios from 'axios';
+import {useAuth0} from '@auth0/auth0-react';
 
 // Test matches
 const matches = [
@@ -56,6 +58,28 @@ const Blurb = styled.p`
 `;
 
 function Results() {
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
+  const [dbUser, setDbUser] = useState('');
+
+  useEffect(async() => {
+    const token = await getAccessTokenSilently()
+
+    const fetchData = async () => {
+      try {
+        const { data: response } = await axios.get('http://192.168.2.88:5000/api/user/profile', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          }
+        });
+        setDbUser(response);
+      } catch (error) {
+        console.error(error)
+      }
+    };
+
+    await fetchData();
+  }, []);
+
   document.body.style.backgroundColor = theme.colors.gray[0];
 
   return (

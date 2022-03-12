@@ -128,9 +128,14 @@ ResultsCard.propTypes = {
   program: PropTypes.string.isRequired,
   term: PropTypes.string.isRequired,
   interests: PropTypes.string.isRequired,
-  instagram: PropTypes.string.isRequired,
-  facebook: PropTypes.string.isRequired,
+  instagram: PropTypes.string,
+  facebook: PropTypes.string,
   email: PropTypes.string.isRequired,
   reachedOut: PropTypes.bool.isRequired,
   contactInfoRevealed: PropTypes.bool.isRequired,
+};
+
+ResultsCard.defaultProps = {
+  instagram: null,
+  facebook: null,
 };
