@@ -1,12 +1,12 @@
 from flask import abort, g
 from flask import request
-from flask_restx import Namespace, Resource
+from flask_restx import Namespace, Resource, cors
+from flask_cors import cross_origin
 
 from api.auth.helper import requires_auth
 from api.user.service import get_user, create_user, update_user, update_user_match, get_all_users
 
-api = Namespace("User", description="User Operations")
-
+api = Namespace("User", description="User Operations", decorators=[cross_origin()])
 
 @api.route("/profile")
 class User(Resource):
@@ -14,7 +14,7 @@ class User(Resource):
     """
     Get user object by ID
     """
-
+    @cors.crossdomain(origin="*")
     def get(self):
         authenticated_user = g.request_payload
         user = get_user(authenticated_user['sub'])
@@ -26,7 +26,7 @@ class User(Resource):
     """
     Update given fields for user object of given ID
     """
-
+    @cors.crossdomain(origin="*")
     def put(self):
         authenticated_user = g.request_payload
         updated_user = update_user(authenticated_user['sub'], request.get_json())
@@ -42,7 +42,7 @@ class User(Resource):
     """
     Update given matches for user object of given ID
     """
-
+    @cors.crossdomain(origin="*")
     def put(self):
         authenticated_user = g.request_payload
         updated_user = update_user_match(authenticated_user['sub'], request.get_json())
@@ -58,7 +58,7 @@ class User(Resource):
     """
     Create user object
     """
-
+    @cors.crossdomain(origin="*")
     def post(self):
         body = request.get_json()
         user_id = body['user']['_id']
@@ -75,7 +75,7 @@ class User(Resource):
     """
     Get all users
     """
-
+    @cors.crossdomain(origin="*")
     def get(self):
         users = get_all_users()
         if users:
