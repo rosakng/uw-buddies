@@ -7,9 +7,9 @@ from jose import jwt
 from six.moves.urllib.request import urlopen
 
 AUTH0_DOMAIN = 'dev-2u1sec9x.us.auth0.com'
-API_AUDIENCE = "https://dev-2u1sec9x.us.auth0.com/api/v2/"
+# API_AUDIENCE = "https://dev-2u1sec9x.us.auth0.com/api/v2/"
+API_AUDIENCE = "https://uw-buddies-be/api"
 ALGORITHMS = ["RS256"]
-
 
 class AuthError(Exception):
     def __init__(self, error, status_code):
@@ -97,7 +97,6 @@ def requires_auth(f):
                                  "description":
                                      "Unable to parse authentication"
                                      " token."}, 401)
-
             _request_ctx_stack.top.current_user = payload
             g.request_payload = payload
             return f(*args, **kwargs)
