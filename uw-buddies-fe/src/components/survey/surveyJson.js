@@ -1,10 +1,17 @@
-const requiredVal = false;
+const requiredVal = true;
 const surveyJson = {
   pages: [
     {
       name: 'page1',
       title: 'Academic Identity',
       elements: [
+        {
+          type: 'text',
+          name: 'full_name',
+          isRequired: requiredVal,
+          hideNumber: false,
+          title: 'My full name is:',
+        },
         {
           name: 'year_of_study',
           type: 'radiogroup',
