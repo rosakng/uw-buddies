@@ -3,12 +3,18 @@ import React, { useState } from 'react';
 import {
   Card, CardContent, Typography, Box, Avatar, Checkbox,
 } from '@mui/material/';
+import { useEnv } from 'context/env.context';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import MailIcon from '@mui/icons-material/Mail';
+import { useAuth0 } from '@auth0/auth0-react';
+import axios from 'axios';
 import Button from './button';
 
 function ResultsCard(props) {
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0();
+  const endpoint = `${useEnv().apiServerUrl}/user/matches`;
+
   const
     {
       name,
@@ -22,7 +28,56 @@ function ResultsCard(props) {
       email,
       facebook,
     } = props;
-  const [reveal, toggleReveal] = useState(contactInfoRevealed);
+
+  const [reveal, setReveal] = useState(contactInfoRevealed);
+  const [reached, setReached] = useState(reachedOut);
+
+  async function revealContactInfo() {
+    setReveal(true);
+    if (!isAuthenticated) {
+      return;
+    }
+
+    const token = await getAccessTokenSilently();
+
+    await axios.put(endpoint, {
+      matchEmail: email,
+      updateObject: {
+        'matches.$.contactInfoRevealed': true,
+      },
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).catch((e) => {
+      console.error(e);
+    });
+  }
+
+  async function toggleReachedOut() {
+    const newState = !reached;
+    setReached(newState);
+
+    if (!isAuthenticated) {
+      return;
+    }
+
+    const token = await getAccessTokenSilently();
+
+    await axios.put(endpoint, {
+      matchEmail: email,
+      updateObject: {
+        'matches.$.reachedOut': newState,
+      },
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).catch((e) => {
+      console.error(e);
+    });
+  }
+
   return (
     <Card sx={{ marginBottom: '20px' }}>
       <CardContent sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -104,13 +159,13 @@ function ResultsCard(props) {
                 <Typography sx={{ alignSelf: 'center', marginTop: '20px' }} variant="subtitle2" component="div">
                   Reached Out?
                 </Typography>
-                <Checkbox defaultChecked={reachedOut} sx={{ paddingTop: '0px', color: 'white', '&.Mui-checked': { color: 'white' } }} />
+                <Checkbox onChange={() => toggleReachedOut()} defaultChecked={reachedOut} sx={{ paddingTop: '0px', color: 'white', '&.Mui-checked': { color: 'white' } }} />
               </Box>
             </Box>
           )
           : (
             <Box sx={{ width: '50%' }}>
-              <Button onClick={() => toggleReveal(true)} primary full>
+              <Button onClick={() => revealContactInfo()} primary full>
                 Click to Reveal
               </Button>
             </Box>
@@ -128,9 +183,14 @@ ResultsCard.propTypes = {
   program: PropTypes.string.isRequired,
   term: PropTypes.string.isRequired,
   interests: PropTypes.string.isRequired,
-  instagram: PropTypes.string.isRequired,
-  facebook: PropTypes.string.isRequired,
+  instagram: PropTypes.string,
+  facebook: PropTypes.string,
   email: PropTypes.string.isRequired,
   reachedOut: PropTypes.bool.isRequired,
   contactInfoRevealed: PropTypes.bool.isRequired,
+};
+
+ResultsCard.defaultProps = {
+  instagram: null,
+  facebook: null,
 };

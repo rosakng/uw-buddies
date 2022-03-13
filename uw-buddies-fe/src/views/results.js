@@ -1,38 +1,15 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ActiveLayout from 'components/active-layout';
 import theme from 'styles/theme';
+import { useEnv } from 'context/env.context';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
 import ResultsCard from '../components/results-card';
-
-// Test matches
-const matches = [
-  {
-    name: 'Bill Sheng',
-    matchBasis: 'interests',
-    program: 'MGTE',
-    term: '4B',
-    interests: 'hockey, eating, running',
-    instagram: 'bill',
-    email: 'bill@uwaterloo.ca',
-    contactInfoRevealed: true,
-    reachedOut: true,
-  },
-  {
-    name: 'Varoon Gupta',
-    matchBasis: 'personality',
-    program: 'CS',
-    term: '3B',
-    interests: 'basketball, hiking',
-    facebook: 'fb.com/varoon',
-    email: 'varoon@uwaterloo.ca',
-    contactInfoRevealed: false,
-    reachedOut: false,
-  },
-];
 
 const Title = styled.h1`
   font-weight: ${(props) => props.theme.font.weight.normal};
@@ -56,6 +33,33 @@ const Blurb = styled.p`
 `;
 
 function Results() {
+  const [matches, setMatches] = useState([]);
+  const navigate = useNavigate();
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0();
+  const endpoint = `${useEnv().apiServerUrl}/user/profile`;
+
+  useEffect(async () => {
+    if (!isAuthenticated) {
+      navigate('/dashboard');
+    }
+
+    const token = await getAccessTokenSilently();
+
+    const fetchData = async () => {
+      try {
+        const { data: response } = await axios.get(endpoint, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setMatches(response.matches);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    await fetchData();
+  }, []);
+
   document.body.style.backgroundColor = theme.colors.gray[0];
 
   return (
