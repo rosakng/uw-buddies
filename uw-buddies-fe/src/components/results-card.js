@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import {
   Card, CardContent, Typography, Box, Avatar, Checkbox,
 } from '@mui/material/';
+import { useEnv } from 'context/env.context';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import MailIcon from '@mui/icons-material/Mail';
@@ -12,6 +13,7 @@ import Button from './button';
 
 function ResultsCard(props) {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
+  const endpoint = `${useEnv().apiServerUrl}/user/matches`;
 
   const
     {
@@ -38,7 +40,7 @@ function ResultsCard(props) {
 
     const token = await getAccessTokenSilently();
 
-    await axios.put('http://192.168.2.88:5000/api/user/matches', {
+    await axios.put(endpoint, {
       matchEmail: email,
       updateObject: {
         'matches.$.contactInfoRevealed': true,
@@ -62,7 +64,7 @@ function ResultsCard(props) {
 
     const token = await getAccessTokenSilently();
 
-    await axios.put('http://192.168.2.88:5000/api/user/matches', {
+    await axios.put(endpoint, {
       matchEmail: email,
       updateObject: {
         'matches.$.reachedOut': newState,

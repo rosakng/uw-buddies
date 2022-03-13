@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ActiveLayout from 'components/active-layout';
 import theme from 'styles/theme';
+import { useEnv } from 'context/env.context';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -35,6 +36,7 @@ function Results() {
   const [matches, setMatches] = useState([]);
   const navigate = useNavigate();
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
+  const endpoint = `${useEnv().apiServerUrl}/user/profile`;
 
   useEffect(async () => {
     if (!isAuthenticated) {
@@ -45,7 +47,7 @@ function Results() {
 
     const fetchData = async () => {
       try {
-        const { data: response } = await axios.get('http://192.168.2.88:5000/api/user/profile', {
+        const { data: response } = await axios.get(endpoint, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -55,7 +57,6 @@ function Results() {
         console.error(error);
       }
     };
-
     await fetchData();
   }, []);
 
