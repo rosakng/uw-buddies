@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 CORS(app)
-# app.config.from_object(config_by_name["dev"])
 initialize_db(app)
 api = Api(app)
 register_routes(api, app)
