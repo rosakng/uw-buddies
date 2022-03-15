@@ -1,4 +1,4 @@
-const requiredVal = false;
+const requiredVal = true;
 const surveyJson = {
   pages: [
     {
