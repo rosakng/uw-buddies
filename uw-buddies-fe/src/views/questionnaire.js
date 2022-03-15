@@ -11,6 +11,11 @@ import 'views/questionnaire.css';
 import {
   StylesManager, Model, Survey,
 } from 'survey-react';
+import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useEnv } from 'context/env.context';
+import { getUserPayload } from 'components/survey/surveyHelper';
+import { snakeCaseObject } from 'lib/utils';
 
 const defaultThemeColorsSurvey = StylesManager
   .ThemeColors.modern;
@@ -37,6 +42,8 @@ const Subtitle = styled.h2`
 
 function Questionnaire() {
   document.body.style.backgroundColor = theme.colors.gray[0];
+  const { isAuthenticated, getAccessTokenSilently, user } = useAuth0();
+  const endpoint = `${useEnv().apiServerUrl}/user`;
 
   const survey = new Model(surveyJson);
 
@@ -44,10 +51,32 @@ function Questionnaire() {
 
   let body;
 
+  async function createUser(sender) {
+    if (!isAuthenticated) {
+      return;
+    }
+    const token = await getAccessTokenSilently();
+
+    const userPayload = snakeCaseObject(getUserPayload(sender, user));
+    // eslint-disable-next-line dot-notation
+    userPayload['_id'] = user.sub;
+
+    axios.post(endpoint, {
+      user: userPayload,
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).catch((e) => {
+      console.error(e);
+    });
+  }
+
   if (showSurvey) {
     const onComplete = () => {
-      console.log(`Survey results: ${JSON.stringify(survey.data)}`);
+      createUser(survey);
     };
+
     body = <Survey model={survey} onComplete={onComplete} />;
   } else {
     body = (

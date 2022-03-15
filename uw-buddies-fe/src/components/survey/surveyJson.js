@@ -1,4 +1,4 @@
-const requiredVal = true;
+const requiredVal = false;
 const surveyJson = {
   pages: [
     {
@@ -7,13 +7,13 @@ const surveyJson = {
       elements: [
         {
           type: 'text',
-          name: 'full_name',
+          name: 'name',
           isRequired: requiredVal,
           hideNumber: false,
           title: 'My full name is:',
         },
         {
-          name: 'year_of_study',
+          name: 'term',
           type: 'radiogroup',
           isRequired: requiredVal,
           hideNumber: false,
@@ -24,15 +24,75 @@ const surveyJson = {
         },
         {
           type: 'dropdown',
-          name: 'program',
-          choices: ['Accounting and Financial Management', 'Actuarial Science', 'Anthropology', 'Applied Mathematics', 'Architectural Engineering', 'Architecture', 'Bachelor of Arts', 'Bachelor of Science', 'Biochemistry', 'Biology', 'Biomedical Engineering', 'Biomedical Sciences', 'Biostatistics', 'Biotechnology/Chartered Professional Accountancy', 'Business Administration (Laurier) and Computer Science (Waterloo) Double Degree', 'Business Administration (Laurier) and Mathematics (Waterloo) Double Degree', 'Business programs', 'Chemical Engineering', 'Chemistry', 'Civil Engineering', 'Classical Studies (2 majors available)', 'Climate and Environmental Change', 'Co-op programs', 'Combinatorics and Optimization', 'Communication Studies', 'Computational Mathematics', 'Computer Engineering', 'Computer Science', 'Computing and Financial Management', 'Data Science', 'Earth Sciences', 'Economics', 'Education (teaching)', 'Electrical Engineering', 'English (3 majors available)', 'Environment and Business', 'Environment, Resources and Sustainability', 'Environmental Engineering', 'Environmental programs at a glance', 'Environmental Science', 'Fine Arts (2 majors available)', 'French', 'Gender and Social Justice', 'Geography and Aviation', 'Geography and Environmental Management', 'Geological Engineering', 'Geomatics', 'German', 'Global Business and Digital Arts', 'Health Sciences', 'History', 'Honours Arts (29 majors available)', 'Honours Arts and Business (29 majors available)', 'Honours Science', 'Information Technology Management', 'International Development', 'Kinesiology', 'Knowledge Integration', 'Legal Studies', 'Liberal Studies', 'Life Physics', 'Life Sciences (4 majors available)', 'Management Engineering', 'Materials and Nanosciences', 'Mathematical Economics', 'Mathematical Finance', 'Mathematical Optimization', 'Mathematical Physics', 'Mathematics (14 majors available)', 'Mathematics/Business Administration', 'Mathematics/Chartered Professional Accountancy', 'Mathematics/Financial Analysis and Risk Management', 'Mathematics/Teaching', 'Mechanical Engineering', 'Mechatronics Engineering', 'Medicinal Chemistry', 'Medieval Studies', 'Minors and specializations', 'Music', 'Nanotechnology Engineering', 'Nursing', 'Optometry', 'Pathways to medical school and other health professions', 'Peace and Conflict Studies', 'Pharmacy', 'Philosophy', 'Physical Sciences (8 majors available)', 'Physics', 'Physics and Astronomy', 'Planning', 'Political Science', 'Pre-law', 'Psychology – Bachelor of Arts', 'Psychology – Bachelor of Science', 'Public Health', 'Pure Mathematics', 'Recreation and Leisure Studies', 'Recreation and Sport Business', 'Religious Studies', 'Science and Aviation', 'Science and Business', 'Sexuality, Marriage, and Family Studies', 'Social Development Studies', 'Social Work', 'Sociology', 'Software Engineering', 'Spanish', 'Statistics', 'Sustainability and Financial Management', 'Systems Design Engineering', 'Teaching', 'Theatre and Performance', 'Therapeutic Recreation'],
+          name: 'faculty',
+          choices: ['Arts', 'Engineering', 'Environment', 'Health', 'Mathematics', 'Science'],
           isRequired: requiredVal,
+          hideNumber: false,
+          title: 'My Faculty at UWaterloo is:',
+        },
+        {
+          type: 'dropdown',
+          name: 'studentProgram',
+          choices: ['Accounting and Financial Management', 'Anthropology', 'Classical Studies', 'Communication Studies', 'Computing and Financial Management', 'Economics', 'English', 'Fine Arts', 'French', 'Gender and Social Justice', 'German', 'Global Business and Digital Arts', 'History', 'Honours Arts', 'Honours Arts and Business', 'Legal Studies', 'Liberal Studies', 'Medieval Studies', 'Music', 'Peace and Conflict Studies', 'Philosophy', 'Political Science', 'Psychology', 'Religious Studies', 'Sexuality, Marriage, and Family Studies', 'Social Development Studies', 'Social Work', 'Sociology', 'Spanish', 'Sustainability and Financial Management', 'Theatre and Performance'],
+          isRequired: requiredVal,
+          visibleIf: "{faculty}='Arts'",
+          valueName: 'program',
           hideNumber: false,
           title: 'My Program at UWaterloo is:',
         },
         {
           type: 'dropdown',
-          name: 'coop',
+          name: 'studentProgram',
+          choices: ['Architectural Engineering', 'Architecture', 'Biomedical Engineering', 'Chemical Engineering', 'Civil Engineering', 'Computer Engineering', 'Electrical Engineering', 'Environmental Engineering', 'Geological Engineering', 'Management Engineering', 'Mechanical Engineering', 'Mechatronics Engineering', 'Nanotechnology Engineering', 'Software Engineering', 'Systems Design Engineering'],
+          isRequired: requiredVal,
+          visibleIf: "{faculty}='Engineering'",
+          valueName: 'program',
+          hideNumber: false,
+          title: 'My Program at UWaterloo is:',
+        },
+        {
+          type: 'dropdown',
+          name: 'studentProgram',
+          choices: ['Climate and Environmental Change', 'Environment and Business', 'Environment, Resources and Sustainability', 'Geography and Aviation', 'Geography and Environmental Management', 'Geomatics', 'International Development', 'Knowledge Integration', 'Planning', 'Sustainability and Financial Management'],
+          isRequired: requiredVal,
+          visibleIf: "{faculty}='Environment'",
+          valueName: 'program',
+          hideNumber: false,
+          title: 'My Program at UWaterloo is:',
+        },
+        {
+          type: 'dropdown',
+          name: 'studentProgram',
+          choices: ['Health Sciences', 'Kinesiology', 'Public Health', 'Recreation and Leisure Studies', 'Recreation and Sport Business', 'Therapeutic Recreation'],
+          isRequired: requiredVal,
+          visibleIf: "{faculty}='Health'",
+          valueName: 'program',
+          hideNumber: false,
+          title: 'My Program at UWaterloo is:',
+        },
+        {
+          type: 'dropdown',
+          name: 'studentProgram',
+          choices: ['Actuarial Science', 'Applied Mathematics', 'Biostatistics', 'Business Administration (Laurier) and Computer Science (Waterloo) Double Degree', 'Business Administration (Laurier) and Mathematics (Waterloo) Double Degree', 'Combinatorics and Optimization', 'Computational Mathematics', 'Computer Science', 'Computing and Financial Management', 'Data Science', 'Information Technology Management', 'Mathematical Economics', 'Mathematical Finance', 'Mathematical Optimization', 'Mathematical Physics', 'Mathematical Studies', 'Mathematics', 'Mathematics/Business Administration', 'Mathematics/Chartered Professional Accountancy', 'Mathematics/Financial Analysis and Risk Management', 'Mathematics Teaching', 'Pure Mathematics', 'Statistics'],
+          isRequired: requiredVal,
+          visibleIf: "{faculty}='Mathematics'",
+          valueName: 'program',
+          hideNumber: false,
+          title: 'My Program at UWaterloo is:',
+        },
+        {
+          type: 'dropdown',
+          name: 'studentProgram',
+          choices: ['Biochemistry', 'Biology', 'Biomedical Sciences', 'Biotechnology/Chartered Professional Accountancy', 'Chemistry', 'Earth Sciences', 'Environmental Science', 'Honours Science', 'Life Physics', 'Life Sciences', 'Physical Sciences', 'Psychology', 'Materials and Nanosciences', 'Mathematical Physics', 'Medicinal Chemistry', 'Optometry', 'Pharmacy', 'Physics', 'Physics and Astronomy', 'Science and Aviation', 'Science and Business'],
+          isRequired: requiredVal,
+          visibleIf: "{faculty}='Science'",
+          valueName: 'program',
+          hideNumber: false,
+          title: 'My Program at UWaterloo is:',
+        },
+        {
+          type: 'dropdown',
+          name: 'currentCoopStatus',
           choices: ['I\'m on co-op right now', 'I\'m on a study term right now', 'I\'m not in a co-op program'],
           isRequired: requiredVal,
           hideNumber: false,
@@ -48,7 +108,7 @@ const surveyJson = {
       elements: [
         {
           type: 'rating',
-          name: 'similar_interests',
+          name: 'sameInterests',
           title: 'Having similar interests matter to me when making a new friend',
           hideNumber: false,
           isRequired: requiredVal,
@@ -57,7 +117,7 @@ const surveyJson = {
         },
         {
           type: 'rating',
-          name: 'compatible_personality_type',
+          name: 'samePersonality',
           title: 'Having a compatible personality type matters to me when making a new friend',
           hideNumber: false,
           isRequired: requiredVal,
@@ -66,7 +126,7 @@ const surveyJson = {
         },
         {
           type: 'rating',
-          name: 'same_program',
+          name: 'sameProgram',
           title: 'Being in the same program matters to me when making a new friend',
           hideNumber: false,
           isRequired: requiredVal,
@@ -75,7 +135,7 @@ const surveyJson = {
         },
         {
           type: 'rating',
-          name: 'same_faculty',
+          name: 'sameFaculty',
           title: 'Being in the same faculty matters to me when making a new friend',
           hideNumber: false,
           isRequired: requiredVal,
@@ -84,7 +144,7 @@ const surveyJson = {
         },
         {
           type: 'rating',
-          name: 'same_academic_year',
+          name: 'sameTerm',
           title: 'Being in the same academic year matters to me when making a new friend',
           hideNumber: false,
           isRequired: requiredVal,
@@ -93,7 +153,7 @@ const surveyJson = {
         },
         {
           type: 'rating',
-          name: 'same_term',
+          name: 'sameCurrentCoopStatus',
           title: 'Being on the same type of academic term matters to me when making a new friend (i.e. work term or study term)',
           hideNumber: false,
           isRequired: requiredVal,
@@ -110,11 +170,11 @@ const surveyJson = {
       elements: [
         {
           type: 'panel',
-          name: 'similar_interests',
+          name: 'interests',
           title: 'Select interests that you\'d like to share with people when you connect with them',
           elements: [
             {
-              name: 'Creativity',
+              name: 'creativity',
               type: 'checkbox',
               title: 'Creativity',
               hasNone: true,
@@ -123,7 +183,7 @@ const surveyJson = {
               isRequired: requiredVal,
             },
             {
-              name: 'Food',
+              name: 'food',
               type: 'checkbox',
               title: 'Food',
               hasNone: true,
@@ -132,7 +192,7 @@ const surveyJson = {
               isRequired: requiredVal,
             },
             {
-              name: 'Going Out',
+              name: 'goingOut',
               type: 'checkbox',
               title: 'Going Out',
               hasNone: true,
@@ -152,11 +212,11 @@ const surveyJson = {
       elements: [
         {
           type: 'panel',
-          name: 'similar_interests',
+          name: 'interests',
           title: 'Select interests that you\'d like to share with people when you connect with them',
           elements: [
             {
-              name: 'Movies',
+              name: 'movies',
               type: 'checkbox',
               title: 'Movies',
               hasNone: true,
@@ -165,7 +225,7 @@ const surveyJson = {
               isRequired: requiredVal,
             },
             {
-              name: 'Music',
+              name: 'music',
               type: 'checkbox',
               title: 'Music',
               hasNone: true,
@@ -174,7 +234,7 @@ const surveyJson = {
               isRequired: requiredVal,
             },
             {
-              name: 'Pets',
+              name: 'pets',
               type: 'checkbox',
               title: 'Pets',
               hasNone: true,
@@ -194,11 +254,11 @@ const surveyJson = {
       elements: [
         {
           type: 'panel',
-          name: 'similar_interests',
+          name: 'interests',
           title: 'Select interests that you\'d like to share with people when you connect with them',
           elements: [
             {
-              name: 'Sports & Fitness',
+              name: 'sportsFitness',
               type: 'checkbox',
               title: 'Sports & Fitness',
               hasNone: true,
@@ -207,7 +267,7 @@ const surveyJson = {
               isRequired: requiredVal,
             },
             {
-              name: 'Staying In',
+              name: 'stayingIn',
               type: 'checkbox',
               title: 'Staying In',
               hasNone: true,
@@ -227,11 +287,11 @@ const surveyJson = {
       elements: [
         {
           type: 'panel',
-          name: 'similar_interests',
+          name: 'interests',
           title: 'Select interests that you\'d like to share with people when you connect with them',
           elements: [
             {
-              name: 'Travelling',
+              name: 'travelling',
               type: 'checkbox',
               title: 'Travelling',
               hasNone: true,
@@ -240,7 +300,7 @@ const surveyJson = {
               isRequired: requiredVal,
             },
             {
-              name: 'Wellness',
+              name: 'wellness',
               type: 'checkbox',
               title: 'Wellness',
               hasNone: true,
@@ -284,43 +344,43 @@ const surveyJson = {
           ],
           rows: [
             {
-              value: 'p1',
+              value: 'lifeOfTheParty',
               text: 'Am the life of the party',
             },
             {
-              value: 'p2',
+              value: 'littleConcernForOthers',
               text: 'Feel little concern for others',
             },
             {
-              value: 'p3',
+              value: 'alwaysPrepared',
               text: 'Am always prepared',
             },
             {
-              value: 'p4',
+              value: 'stressedOutEasily',
               text: 'Get stressed out easily',
             },
             {
-              value: 'p5',
+              value: 'richVocabulary',
               text: 'Have a rich vocabulary',
             },
             {
-              value: 'p6',
+              value: 'notTalkAlot',
               text: 'Don\'t talk a lot',
             },
             {
-              value: 'p7',
+              value: 'interestedInPeople',
               text: 'Am interested in people',
             },
             {
-              value: 'p8',
+              value: 'leaveBelongingsAround',
               text: 'Leave my belongings around',
             },
             {
-              value: 'p9',
+              value: 'relaxedMostOfTheTime',
               text: 'Am relaxed most of the time',
             },
             {
-              value: 'p10',
+              value: 'difficultyUnderstandingAbstractIdeas',
               text: 'Have difficulty understanding abstract ideas',
             },
           ],
@@ -359,43 +419,43 @@ const surveyJson = {
           ],
           rows: [
             {
-              value: 'p11',
+              value: 'comfortableAroundPeople',
               text: 'Feel comfortable around people',
             },
             {
-              value: 'p12',
+              value: 'insultPeople',
               text: 'Insult people',
             },
             {
-              value: 'p13',
+              value: 'attentionToDetails',
               text: 'Pay attention to details',
             },
             {
-              value: 'p14',
+              value: 'worryAboutThings',
               text: 'Worry about things',
             },
             {
-              value: 'p15',
+              value: 'vividImagination',
               text: 'Have a vivid imagination',
             },
             {
-              value: 'p16',
+              value: 'keepInBackground',
               text: 'Keep in the background',
             },
             {
-              value: 'p17',
+              value: 'sympathizeWithFeelings',
               text: 'Sympathize with others\' feelings',
             },
             {
-              value: 'p18',
+              value: 'makeMessOfThings',
               text: 'Make a mess of things',
             },
             {
-              value: 'p19',
+              value: 'seldomFeelBlue',
               text: 'Seldom feel blue',
             },
             {
-              value: 'p20',
+              value: 'notInterestedInAbstractIdeas',
               text: 'Am not interested in abstract ideas',
             },
           ],
@@ -434,43 +494,43 @@ const surveyJson = {
           ],
           rows: [
             {
-              value: 'p21',
+              value: 'startConversations',
               text: 'Start conversations',
             },
             {
-              value: 'p22',
+              value: 'notInterestedInOtherPeoplesProblems',
               text: 'Am not interested in other people\'s problems',
             },
             {
-              value: 'p23',
+              value: 'getChoresDoneRightAway',
               text: 'Get chores done right away',
             },
             {
-              value: 'p24',
+              value: 'easilyDisturbed',
               text: 'Am easily disturbed',
             },
             {
-              value: 'p25',
+              value: 'excellentIdeas',
               text: 'Have excellent ideas',
             },
             {
-              value: 'p26',
+              value: 'littleToSay',
               text: 'Have little to say',
             },
             {
-              value: 'p27',
+              value: 'softHeart',
               text: 'Have a soft heart',
             },
             {
-              value: 'p28',
+              value: 'forgetToPutThingsBack',
               text: 'Often forget to put things back in their proper place',
             },
             {
-              value: 'p29',
+              value: 'upsetEasily',
               text: 'Get upset easily',
             },
             {
-              value: 'p30',
+              value: 'doNotHaveGoodImagination',
               text: 'Do not have a good imagination',
             },
           ],
@@ -509,43 +569,43 @@ const surveyJson = {
           ],
           rows: [
             {
-              value: 'p31',
+              value: 'talkToDifferentPeopleAtParties',
               text: 'Talk to a lot of different people at parties',
             },
             {
-              value: 'p32',
+              value: 'notInterestedInOthers',
               text: 'Am not really interested in others',
             },
             {
-              value: 'p33',
+              value: 'likeOrder',
               text: 'Like order',
             },
             {
-              value: 'p34',
+              value: 'changeMoodAlot',
               text: 'Change my mood a lot',
             },
             {
-              value: 'p35',
+              value: 'quickToUnderstandThings',
               text: 'Am quick to understand things',
             },
             {
-              value: 'p36',
+              value: 'dontDrawAttentionToMyself',
               text: 'Don\'t like to draw attention to myself',
             },
             {
-              value: 'p37',
+              value: 'takeTimeOutForOthers',
               text: 'Take time out for others',
             },
             {
-              value: 'p38',
+              value: 'shirkDuties',
               text: 'Shirk my duties',
             },
             {
-              value: 'p39',
+              value: 'frequentMoodSwings',
               text: 'Have frequent mood swings',
             },
             {
-              value: 'p40',
+              value: 'difficultWords',
               text: 'Use difficult words',
             },
           ],
@@ -584,43 +644,43 @@ const surveyJson = {
           ],
           rows: [
             {
-              value: 'p41',
+              value: 'dontMindBeingCenterOfAttention',
               text: 'Don\'t mind being the center of attention',
             },
             {
-              value: 'p42',
+              value: 'feelOthersEmotions',
               text: 'Feel others\' emotions',
             },
             {
-              value: 'p43',
+              value: 'followSchedule',
               text: 'Follow a schedule',
             },
             {
-              value: 'p44',
+              value: 'irritatedEasily',
               text: 'Get irritated easily',
             },
             {
-              value: 'p45',
+              value: 'spendTimeReflecting',
               text: 'Spend time reflecting on things',
             },
             {
-              value: 'p46',
+              value: 'quietAroundStrangers',
               text: 'Am quiet around strangers',
             },
             {
-              value: 'p47',
+              value: 'makePeopleFeelAtEase',
               text: 'Make people feel at ease',
             },
             {
-              value: 'p48',
+              value: 'exactingInMyWork',
               text: 'Am exacting in my work',
             },
             {
-              value: 'p49',
+              value: 'oftenFeelBlue',
               text: 'Often feel blue',
             },
             {
-              value: 'p50',
+              value: 'fullOfIdeas',
               text: 'Am full of ideas',
             },
           ],
