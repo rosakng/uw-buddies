@@ -57,8 +57,7 @@ class User(Resource):
     Update given matches for user object of given ID
     """
     def put(self):
-        authenticated_user = g.request_payload
-        updated_user = append_match(authenticated_user['sub'], request.get_json())
+        updated_user = append_match(request.get_json())
         if updated_user:
             return updated_user, 200
         else:

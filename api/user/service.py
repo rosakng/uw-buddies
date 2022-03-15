@@ -77,10 +77,10 @@ Given a user ID and a match object, add the new object to the user's matches lis
 If successful, updated user object will be returned.
 If an error occurs, return None.
 """
-def append_match(user_id, match_obj):
+def append_match(match_obj):
     updated_user = users.find_one_and_update(
-        {"_id": user_id},
-        {"$push": {"matches": match_obj}},
+        {"_id": match_obj['user_id']},
+        {"$set": {"matches": match_obj['entire_match_list']}},
         return_document=ReturnDocument.AFTER
     )
 
