@@ -98,7 +98,7 @@ function ResultsCard(props) {
             {' '}
             {term}
           </Typography>
-          {(interests && interests !== []) ? (
+          {(interests) ? (
             <Box sx={{ display: 'flex', flexDirection: 'row' }}>
               <Typography variant="subtitle2" color="text.primary" component="div">
                 Interests: &nbsp;
@@ -195,5 +195,5 @@ ResultsCard.propTypes = {
 ResultsCard.defaultProps = {
   instagram: null,
   facebook: null,
-  interests: [],
+  interests: null,
 };
