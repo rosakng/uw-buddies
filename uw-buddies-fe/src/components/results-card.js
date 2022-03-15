@@ -98,14 +98,16 @@ function ResultsCard(props) {
             {' '}
             {term}
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-            <Typography variant="subtitle2" color="text.primary" component="div">
-              Interests: &nbsp;
-            </Typography>
-            <Typography sx={{ alignSelf: 'flex-end' }} variant="subtitle2" color="text.secondary" component="div">
-              {interests}
-            </Typography>
-          </Box>
+          {(interests && interests !== []) ? (
+            <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+              <Typography variant="subtitle2" color="text.primary" component="div">
+                Interests: &nbsp;
+              </Typography>
+              <Typography sx={{ alignSelf: 'flex-end' }} variant="subtitle2" color="text.secondary" component="div">
+                {interests.join(', ')}
+              </Typography>
+            </Box>
+          ) : null}
         </Box>
         {reveal
           ? (
@@ -182,7 +184,7 @@ ResultsCard.propTypes = {
   matchBasis: PropTypes.string.isRequired,
   program: PropTypes.string.isRequired,
   term: PropTypes.string.isRequired,
-  interests: PropTypes.string.isRequired,
+  interests: PropTypes.arrayOf(PropTypes.string),
   instagram: PropTypes.string,
   facebook: PropTypes.string,
   email: PropTypes.string.isRequired,
@@ -193,4 +195,5 @@ ResultsCard.propTypes = {
 ResultsCard.defaultProps = {
   instagram: null,
   facebook: null,
+  interests: [],
 };
