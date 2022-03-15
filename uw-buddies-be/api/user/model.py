@@ -12,7 +12,7 @@ class Match(BaseModel):
     program: str
     term: str
     current_coop_status: str
-    interests: str
+    interests: Optional[List[str]]
     instagram: Optional[str]
     facebook: Optional[str]
     email: str
