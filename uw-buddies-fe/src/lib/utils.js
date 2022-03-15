@@ -5,12 +5,10 @@ import {
 
 export const deepMapKeys = (input, iteratee) => {
   if (!input) {
-    console.log('sfasd');
     return null;
   }
 
   if (!isPlainObject(input)) {
-    console.log('not a plain object');
     return input;
   }
 
