@@ -73,6 +73,23 @@ def update_user_match(user_id, edit_obj):
         return None
 
 """
+Given a user ID and a match object, add the new object to the user's matches list in Mongo.
+If successful, updated user object will be returned.
+If an error occurs, return None.
+"""
+def append_match(user_id, match_obj):
+    updated_user = users.find_one_and_update(
+        {"_id": user_id},
+        {"$push": {"matches": match_obj}},
+        return_document=ReturnDocument.AFTER
+    )
+
+    if updated_user:
+        return User(**updated_user).to_json()
+    else:
+        return None
+
+"""
 Get all users in the users table.
 If successful, returns list of user objects.
 If an error occurs, return None.
