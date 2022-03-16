@@ -16,6 +16,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useEnv } from 'context/env.context';
 import { getUserPayload } from 'components/survey/surveyHelper';
 import { snakeCaseObject } from 'lib/utils';
+import StyledDiv from 'components/styled-div';
 
 const defaultThemeColorsSurvey = StylesManager
   .ThemeColors.modern;
@@ -68,6 +69,7 @@ function Questionnaire() {
         Authorization: `Bearer ${token}`,
       },
     }).catch((e) => {
+      // eslint-disable-next-line no-console
       console.error(e);
     });
   }
@@ -80,7 +82,7 @@ function Questionnaire() {
     body = <Survey model={survey} onComplete={onComplete} />;
   } else {
     body = (
-      <>
+      <StyledDiv height="65vh">
         <Subtitle>
           Your survey results will be collected to determine your matches.
           <br />
@@ -88,7 +90,7 @@ function Questionnaire() {
           Your survey is 0% complete.
         </Subtitle>
         <Button inline primary onClick={() => setShowSurvey(true)}>Start</Button>
-      </>
+      </StyledDiv>
     );
   }
   return (

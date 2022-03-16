@@ -84,7 +84,7 @@ const Title = styled.h1`
 
 function SideMenu() {
   const navigate = useNavigate();
-  const onLogoClick = () => navigate(ROUTES.DASHBOARD);
+  const onLogoClick = () => navigate(ROUTES.QUESTIONNARE);
   const { user, logout } = useAuth0();
   const onLogout = () => {
     logout({ returnTo: `${window.location.origin}${ROUTES.HOME}` });
@@ -104,16 +104,7 @@ function SideMenu() {
         {user && (
         <div style={{ height: 'calc(100vh - 13vh - 44px)' }}>
           <div>
-            <MenuLink to={ROUTES.DASHBOARD}>Dashboard</MenuLink>
-          </div>
-          <div>
             <MenuLink to={ROUTES.QUESTIONNARE}>Questionnaire</MenuLink>
-          </div>
-          <div>
-            <MenuLink to={ROUTES.PROFILE}>Profile</MenuLink>
-          </div>
-          <div>
-            <MenuLink to={ROUTES.LEARN}>Events</MenuLink>
           </div>
           <div>
             <MenuLink to={ROUTES.RESULTS}>Buddies</MenuLink>

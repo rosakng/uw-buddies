@@ -64,13 +64,15 @@ const noMatchStyle = {
   width: '100%',
 };
 
-function MenuLink({ to, children, external = false }) {
+function MenuLink({
+  to, children, external = false,
+}) {
   const resolved = useResolvedPath(to);
   const match = useMatch({ path: resolved.pathname, end: true });
   if (external) {
     return (
       <div>
-        <ExternalLink href={to} target="_blank" rel="noreferrer">FAQ</ExternalLink>
+        <ExternalLink href={to} target="_blank" rel="noreferrer">{children}</ExternalLink>
       </div>
     );
   }
@@ -118,13 +120,13 @@ function TopMenu() {
               <MenuLink to={ROUTES.LEARN}>Learn More</MenuLink>
             </StyledDiv>
             <StyledDiv>
-              <MenuLink to={ROUTES.ABOUT}>About Us</MenuLink>
+              <MenuLink to={ROUTES.ABOUT}>Our Team</MenuLink>
             </StyledDiv>
             <StyledDiv>
               <MenuLink external to={ROUTES.FAQ}>FAQ</MenuLink>
             </StyledDiv>
             <StyledDiv>
-              <MenuLink to={ROUTES.CONTACT}>Contact Us</MenuLink>
+              <MenuLink external to={ROUTES.CONTACT}>Contact Us</MenuLink>
             </StyledDiv>
           </StyledDiv>
           <RegisterButton />

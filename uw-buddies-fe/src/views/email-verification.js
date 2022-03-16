@@ -7,6 +7,7 @@ import theme from 'styles/theme';
 import InactiveLayout from 'components/inactive-layout';
 import Button from 'components/button';
 import { useAuth0 } from '@auth0/auth0-react';
+import StyledDiv from 'components/styled-div';
 
 const learnStyle = {
   position: 'absolute',
@@ -46,20 +47,22 @@ function EmailVerificationRequired() {
 
   return (
     <InactiveLayout>
-      <div style={learnStyle}>
-        <div style={learnContainerStyle}>
-          <UWBuddiesLogo size="200vh" />
-          <div style={learnContentStyle}>
-            Please verify your email to proceed to UW Buddies!
+      <StyledDiv height="65vh">
+        <div style={learnStyle}>
+          <div style={learnContainerStyle}>
+            <UWBuddiesLogo size="200vh" />
+            <div style={learnContentStyle}>
+              Please verify your email to proceed to UW Buddies!
+            </div>
+            {/* LOGOUT */}
+            {user && (
+            <div style={logoutStyle}>
+              {user && <Button inverse onClick={onLogout}>Logout</Button>}
+            </div>
+            )}
           </div>
-          {/* LOGOUT */}
-          {user && (
-          <div style={logoutStyle}>
-            {user && <Button inverse onClick={onLogout}>Logout</Button>}
-          </div>
-          )}
         </div>
-      </div>
+      </StyledDiv>
     </InactiveLayout>
   );
 }
