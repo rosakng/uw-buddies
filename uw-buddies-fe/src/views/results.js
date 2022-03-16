@@ -9,6 +9,7 @@ import { useEnv } from 'context/env.context';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
+import StyledDiv from 'components/styled-div';
 import ResultsCard from '../components/results-card';
 
 const Title = styled.h1`
@@ -74,14 +75,14 @@ function Results() {
         </div>
       )
         : (
-          <div>
+          <StyledDiv height="75vh">
             <Subtitle>
               Your buddies will be presented here
             </Subtitle>
             <Blurb>
               Come back next Match Monday to view your matches
             </Blurb>
-          </div>
+          </StyledDiv>
         )}
     </ActiveLayout>
   );

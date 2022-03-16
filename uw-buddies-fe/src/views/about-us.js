@@ -30,17 +30,19 @@ function AboutUs() {
 
   return (
     <InactiveLayout>
-      <Title>Our Team</Title>
-      <Subtitle>
-        UW buddies is the capstone project of a group of 4B Management Engineering
-        students looking to help others make friends. Meet the team!
-      </Subtitle>
-      <StyledDiv flex justifyContent="space-between" marginVertical={10}>
-        <Member alt="jeffrey" src={Jeffrey} name="Jeffrey Quiambao" position="PM" />
-        <Member alt="varoon" src={Varoon} name="Varoon Gupta" position="PM" />
-        <Member alt="derek" src={Derek} name="Derek Xu" position="SWE" />
-        <Member alt="rosa" src={Rosa} name="Rosa Kang" position="SWE" />
-        <Member alt="bill" src={Bill} name="Bill Sheng" position="SWE" />
+      <StyledDiv height="65vh">
+        <Title>Our Team</Title>
+        <Subtitle>
+          UW buddies is the capstone project of a group of 4B Management Engineering
+          students looking to help others make friends. Meet the team!
+        </Subtitle>
+        <StyledDiv flex justifyContent="space-between" marginVertical={10}>
+          <Member alt="jeffrey" src={Jeffrey} name="Jeffrey Quiambao" position="PM" />
+          <Member alt="varoon" src={Varoon} name="Varoon Gupta" position="PM" />
+          <Member alt="derek" src={Derek} name="Derek Xu" position="SWE" />
+          <Member alt="rosa" src={Rosa} name="Rosa Kang" position="SWE" />
+          <Member alt="bill" src={Bill} name="Bill Sheng" position="SWE" />
+        </StyledDiv>
       </StyledDiv>
     </InactiveLayout>
   );

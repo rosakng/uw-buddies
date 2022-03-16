@@ -113,3 +113,7 @@
     margin-left: 0.5em;
     -sizing: border-box;
 }
+
+.sv-root-modern .sv-completedpage {
+    height: 66vh;
+}
