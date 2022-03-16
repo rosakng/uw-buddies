@@ -6,7 +6,7 @@ const ROUTES = {
   CONTACT: 'mailto:fydpthrowaway@gmail.com',
   AUTHENTICATE: '/authenticate',
   DASHBOARD: '/dashboard',
-  QUESTIONNARE: '/questionnare',
+  QUESTIONNARE: '/questionnaire',
   PROFILE: '/profile',
   EVENTS: '/events',
   RESULTS: '/results',
