@@ -15,10 +15,12 @@ from util import get_lowest_10_float
 
 class MatchingAlgorithm:
 
-    def __init__(self, users):
+    def __init__(self, users, client):
         self.users = {}
         for user in users:
             self.users[user['_id']] = user
+
+        self.api_client = client
 
     def get_common_interests_score(self, user_1, user_2):
         # TODO: update this syntax once data format is finalized
@@ -339,11 +341,11 @@ class MatchingAlgorithm:
         # get top m
         top_m = defaultdict(set)
         top_m_ids = defaultdict(set)
-        for user_1_id, ranking_tuple in ranked_lists.items():
-            for _ in range(int(m)):
-                user_2 = heappop(ranking_tuple)
-                user_2_id = user_2[2]
-                user_2_match_basis = user_2[3]
+        for user_1_id, ranking_tuples in ranked_lists.items():
+            # edge case where m > number of users in the system
+            for _ in range(min(int(m), len(ranking_tuples))):
+                user_2 = heappop(ranking_tuples)
+                _, _, user_2_id, user_2_match_basis = user_2
                 top_m[user_1_id].add((user_2_id, user_2_match_basis))
                 top_m_ids[user_1_id].add(user_2_id)
 
@@ -394,16 +396,38 @@ class MatchingAlgorithm:
 
         return matches
 
+    def apply_matches(self, matches, api_client):
+        # iterate through matches
+        for user_id, match_list in matches.items():
+            # convert list to dict by email
+            email_to_match_map = {match['email']: match for match in match_list}
+
+            existing_match_emails = set(
+                [user["email"] for user in self.users[user_id][matches]])
+            current_cycle_match_emails = set(
+                [user["email"] for user in match_list])
+
+            # find set difference and add to existing match list for user
+            new_match_emails = existing_match_emails.difference(
+                current_cycle_match_emails)
+            for match_email in new_match_emails:
+                match_list.append(email_to_match_map[match_email])
+
+            api_client.update_user_match(user_id, match_list)
+        return
+
 
 def main(m):
     pp = pprint.PrettyPrinter(indent=4)
     auth = Auth()
     client = Client(auth)
     users = client.get_all_users()
-    matching_algorithm = MatchingAlgorithm(users)
+    matching_algorithm = MatchingAlgorithm(users, client)
 
     print('-----------------------MATCHES-------------------------')
     pp.pprint(matching_algorithm.get_matches(m, users))
+
+    # call
     return
 
 

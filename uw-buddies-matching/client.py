@@ -20,3 +20,15 @@ class Client:
         # pp.pprint(users[0])
         # pp.pprint(users)
         return users
+
+    def update_user_match(self, user_id, matches):
+        url = f"{self.server_hostname}/user/matches/new"
+        payload = json.dumps({
+            "user_id": user_id,
+            "entire_match_list": matches})
+        r = requests.put(url, data=payload, headers=self.auth_headers)
+        if r.status_code != 200:
+            print(r.status_code)
+            print(r.reason)
+
+        print("Successfully updated matches for user_id {user_id}")
