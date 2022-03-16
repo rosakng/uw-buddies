@@ -56,7 +56,7 @@ function Home() {
             Take 20 minutes to fill out our questionnaire and make a friend!
             <br />
             <br />
-            Sign-ups for our beta testing group closes Wednesday, February 16th, 2022 at 11:59pm EST
+            Ready to meet a buddy?
           </Subtitle>
           <RegisterButton onClick={() => {}}>Sign in / Sign up</RegisterButton>
         </StyledDiv>

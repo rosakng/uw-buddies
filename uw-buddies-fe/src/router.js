@@ -11,8 +11,6 @@ import ProtectedComponent from 'components/auth/protected-component';
 
 import LearnMore from 'views/learn-more';
 import Home from 'views/home';
-import Dashboard from 'views/dashboard';
-import Profile from 'views/profile';
 import Results from 'views/results';
 import Questionnaire from 'views/questionnaire';
 import Auth from 'views/auth';
@@ -38,16 +36,6 @@ export default function UWBuddiesRouter() {
                 exact
                 path={ROUTES.QUESTIONNARE}
                 element={<ProtectedComponent component={Questionnaire} />}
-              />
-              <Route
-                exact
-                path={ROUTES.DASHBOARD}
-                element={<ProtectedComponent component={Dashboard} />}
-              />
-              <Route
-                exact
-                path={ROUTES.PROFILE}
-                element={<ProtectedComponent component={Profile} />}
               />
               <Route
                 exact

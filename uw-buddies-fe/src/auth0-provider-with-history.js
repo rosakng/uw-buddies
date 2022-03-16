@@ -8,7 +8,7 @@ import { useEnv } from './context/env.context';
 export default function Auth0ProviderWithHistory({ children }) {
   const navigate = useNavigate();
   const { domain, clientId, audience } = useEnv();
-  const redirectUri = `${window.location.origin}${ROUTES.DASHBOARD}`;
+  const redirectUri = `${window.location.origin}${ROUTES.QUESTIONNARE}`;
 
   const onRedirectCallback = (appState) => {
     navigate(appState?.returnTo || window.location.pathname);
