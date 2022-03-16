@@ -60,10 +60,31 @@ Given a user ID and data regarding the match object to be updated, update the ma
 If successful, updated user object will be returned.
 If an error occurs, return None.
 """
+
+
 def update_user_match(user_id, edit_obj):
     updated_user = users.find_one_and_update(
         {"_id": user_id, "matches.email": edit_obj['matchEmail']},
         {"$set": edit_obj['updateObject']},
+        return_document=ReturnDocument.AFTER
+    )
+
+    if updated_user:
+        return User(**updated_user).to_json()
+    else:
+        return None
+
+"""
+Given a user ID and a match object, add the new object to the user's matches list in Mongo.
+If successful, updated user object will be returned.
+If an error occurs, return None.
+"""
+
+
+def append_match(match_obj):
+    updated_user = users.find_one_and_update(
+        {"_id": match_obj['user_id']},
+        {"$set": {"matches": match_obj['entire_match_list']}},
         return_document=ReturnDocument.AFTER
     )
 
@@ -84,4 +105,3 @@ def get_all_users():
         return [User(**user).to_json() for user in all_users]
     else:
         return None
-
