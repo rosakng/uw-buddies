@@ -95,6 +95,9 @@ class Questionnaire(BaseModel):
     compatibility: Compatibility
     survey_sentiment: Optional[int]
 
+class Social(BaseModel):
+    instagram: Optional[str]
+    facebook: Optional[str]
 
 class User(BaseModel):
     id: str = Field(alias='_id')
@@ -102,6 +105,7 @@ class User(BaseModel):
     name: str
     opted_in: bool
     education: Education
+    social: Optional[Social]
     questionnaire: Questionnaire
     matches: Optional[List[Match]]
 
