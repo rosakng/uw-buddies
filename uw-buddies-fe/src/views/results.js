@@ -54,6 +54,7 @@ function Results() {
         });
         setMatches(response.matches);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
       }
     };

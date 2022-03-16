@@ -3,7 +3,7 @@ const ROUTES = {
   LEARN: '/learn',
   HOW: '/how',
   ABOUT: '/about',
-  CONTACT: '/contact',
+  CONTACT: 'mailto:fydpthrowaway@gmail.com',
   AUTHENTICATE: '/authenticate',
   DASHBOARD: '/dashboard',
   QUESTIONNARE: '/questionnare',
