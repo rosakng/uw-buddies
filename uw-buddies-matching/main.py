@@ -15,12 +15,10 @@ from util import get_lowest_10_float
 
 class MatchingAlgorithm:
 
-    def __init__(self, users, client):
+    def __init__(self, users):
         self.users = {}
         for user in users:
             self.users[user['_id']] = user
-
-        self.api_client = client
 
     def get_common_interests_score(self, user_1, user_2):
         # TODO: update this syntax once data format is finalized
@@ -400,7 +398,8 @@ class MatchingAlgorithm:
         # iterate through matches
         for user_id, match_list in matches.items():
             # convert list to dict by email
-            email_to_match_map = {match['email']: match for match in match_list}
+            email_to_match_map = {match['email']
+                : match for match in match_list}
 
             existing_match_emails = set(
                 [user["email"] for user in self.users[user_id][matches]])
@@ -425,10 +424,10 @@ def main(m):
     matching_algorithm = MatchingAlgorithm(users, client)
 
     print('-----------------------MATCHES-------------------------')
-    pp.pprint(matching_algorithm.get_matches(m, users))
+    matches = matching_algorithm.get_matches(m, users)
+    pp.pprint(matches)
 
-    # call
-    return
+    matching_algorithm.apply_matches(matches, client)
 
 
 if __name__ == "__main__":
