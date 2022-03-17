@@ -18,6 +18,7 @@ const LearnContainer = styled.div`
   padding-bottom: ${(props) => props.theme.space[10]};
   align-content: center;
   text-align: center;
+  margin-bottom: 10vh;
 `;
 
 const Subtitle = styled.h2`

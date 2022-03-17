@@ -39,6 +39,7 @@ const HomeContainer = styled.div`
   border-radius: 10px;
   padding-top: ${(props) => props.theme.space[1]};
   padding-bottom: ${(props) => props.theme.space[10]};
+  margin-bottom: 10vh;
 `;
 
 function Home() {

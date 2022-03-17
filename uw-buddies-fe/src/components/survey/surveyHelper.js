@@ -31,6 +31,11 @@ export const getUserPayload = (survey, user) => {
     compatibility: compatibilityPayload,
   };
 
+  const userSocial = {
+    instagram: data.instagram ? data.instagram : null,
+    facebook: data.facebook ? data.facebook : null,
+  };
+
   const userObj = {
     optedIn: true,
     name: data.name,
@@ -43,6 +48,7 @@ export const getUserPayload = (survey, user) => {
     },
     questionnaire: questionnairePayload,
     matches: [],
+    social: userSocial,
   };
 
   return userObj;
