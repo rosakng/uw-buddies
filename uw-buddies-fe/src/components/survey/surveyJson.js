@@ -98,6 +98,24 @@ const surveyJson = {
           hideNumber: false,
           title: 'My co-op status at UWaterloo is:',
         },
+        {
+          type: 'panel',
+          name: 'socialInformation',
+          elements: [
+            {
+              type: 'text',
+              name: 'instagram',
+              title: 'My Instagram username (i.e. @uw.buddies) is:',
+            }, {
+              type: 'text',
+              name: 'facebook',
+              title: 'My Facebook profile url (i.e. www.facebook.com/uw.buddies) is:',
+            },
+          ],
+          title: 'Socials (Optional)',
+          showNumber: false,
+          showQuestionNumbers: 'true',
+        },
       ],
       navigationTitle: 'Student',
       navigationDescription: "Student's info",

@@ -41,6 +41,10 @@
     }
 }
 
+.sv-root-modern .sv-footer__next-btn {
+    margin-bottom: 7vh;
+}
+
 .sv-completedpage:before {
     display: block;
     width: 72px;
