@@ -50,6 +50,7 @@ function ResultsCard(props) {
         Authorization: `Bearer ${token}`,
       },
     }).catch((e) => {
+      // eslint-disable-next-line no-console
       console.error(e);
     });
   }
@@ -74,6 +75,7 @@ function ResultsCard(props) {
         Authorization: `Bearer ${token}`,
       },
     }).catch((e) => {
+      // eslint-disable-next-line no-console
       console.error(e);
     });
   }

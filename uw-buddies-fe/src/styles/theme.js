@@ -21,6 +21,9 @@ export default {
       '#EBEBF1', // 3 Buttons
       '#696996', // experiment
     ],
+    green: [
+      '#46AA61',
+    ],
   },
   font: {
     family: {

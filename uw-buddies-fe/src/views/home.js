@@ -121,7 +121,7 @@ function Home() {
           </Blurb>
         </StyledDiv>
       </StyledDiv>
-      <StyledDiv flex justifyContent="space-evenly" marginVertical={13}>
+      <StyledDiv flex justifyContent="space-evenly" marginTop={13} marginBottom={15}>
         <StyledDiv flex justifyContent="center" width="calc(100vh/3)">
           <img alt="" src="https://img.icons8.com/emoji/160/000000/exploding-head.png" />
         </StyledDiv>
