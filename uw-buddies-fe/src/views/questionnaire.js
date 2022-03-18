@@ -1,5 +1,5 @@
 /* eslint-disable prefer-destructuring */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import ActiveLayout from 'components/active-layout';
 import theme from 'styles/theme';
@@ -41,14 +41,24 @@ const Subtitle = styled.h2`
   color: ${(props) => props.theme.colors.gray[7]};
 `;
 
+const SurveyStatusText = styled.h2`
+  margin-top: ${(props) => props.theme.space[6]};
+  font-weight: ${(props) => props.theme.font.weight.light};
+  font-size: ${(props) => props.theme.font.size[6]};
+  color: ${(props) => props.theme.colors.green[0]};
+`;
+
 function Questionnaire() {
   document.body.style.backgroundColor = theme.colors.gray[0];
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0();
-  const endpoint = `${useEnv().apiServerUrl}/user`;
+  const createUserEndpoint = `${useEnv().apiServerUrl}/user`;
+  const updateUserEndpoint = `${useEnv().apiServerUrl}/user/profile`;
+  const getUserEndpoint = `${useEnv().apiServerUrl}/user/profile`;
 
   const survey = new Model(surveyJson);
 
   const [showSurvey, setShowSurvey] = useState(false);
+  const [updateSurvey, setUpdateSurvey] = useState(false);
 
   let body;
 
@@ -62,7 +72,7 @@ function Questionnaire() {
     // eslint-disable-next-line dot-notation
     userPayload['_id'] = user.sub;
 
-    axios.post(endpoint, {
+    axios.post(createUserEndpoint, {
       user: userPayload,
     }, {
       headers: {
@@ -74,22 +84,81 @@ function Questionnaire() {
     });
   }
 
+  async function updateUser(sender) {
+    if (!isAuthenticated) {
+      return;
+    }
+    const token = await getAccessTokenSilently();
+
+    const userPayload = snakeCaseObject(getUserPayload(sender, user));
+    // eslint-disable-next-line dot-notation
+    userPayload['_id'] = user.sub;
+    axios.put(updateUserEndpoint, userPayload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).catch((e) => {
+      // eslint-disable-next-line no-console
+      console.error(e);
+    });
+  }
+
+  useEffect(async () => {
+    const token = await getAccessTokenSilently();
+
+    const fetchData = async () => {
+      try {
+        const { data: response } = await axios.get(getUserEndpoint, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (response) {
+          setUpdateSurvey(true);
+        } else {
+          setUpdateSurvey(false);
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      }
+    };
+    await fetchData();
+  }, []);
+
   if (showSurvey) {
     const onComplete = () => {
-      createUser(survey);
+      if (updateSurvey) {
+        updateUser(survey);
+      } else {
+        createUser(survey);
+      }
     };
-
     body = <Survey model={survey} onComplete={onComplete} />;
   } else {
     body = (
       <StyledDiv height="65vh">
-        <Subtitle>
-          Your survey results will be collected to determine your matches.
-          <br />
-          <br />
-          Your survey is 0% complete.
-        </Subtitle>
-        <Button inline primary onClick={() => setShowSurvey(true)}>Start</Button>
+        {updateSurvey ? (
+          <>
+            <SurveyStatusText>
+              Your survey has been submitted.
+              <br />
+            </SurveyStatusText>
+            <Subtitle>
+              If you would like to resubmit the survey, press Start.
+            </Subtitle>
+          </>
+        ) : (
+          <Subtitle>
+            Your survey results will be collected to determine your matches.
+            <br />
+            <br />
+            Your survey is 0% complete.
+          </Subtitle>
+        )}
+        <StyledDiv marginVertical={11}>
+          <Button inline primary onClick={() => setShowSurvey(true)}>Start</Button>
+        </StyledDiv>
       </StyledDiv>
     );
   }
