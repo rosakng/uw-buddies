@@ -101,7 +101,7 @@ function ResultsCard(props) {
             {term}
           </Typography>
           {(interests) ? (
-            <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'row', marginRight: '50px' }}>
               <Typography variant="subtitle2" color="text.primary" component="div">
                 Interests: &nbsp;
               </Typography>
@@ -117,7 +117,7 @@ function ResultsCard(props) {
               display: 'flex', width: '50%', height: '100px', alignSelf: 'center', flexDirection: 'row',
             }}
             >
-              <Box sx={{ marginRight: '30px', width: '200px' }}>
+              <Box sx={{ marginRight: '130px', width: '200px' }}>
                 {
                   instagram
                     ? (
