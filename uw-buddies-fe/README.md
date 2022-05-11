@@ -1,8 +1,58 @@
-# Getting Started with Create React App
+# UW Buddies
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-## Available Scripts
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+Learn about the UW Buddies' mandate to improve the first year socialization experience [here](https://docs.google.com/document/d/1Qo0IhtRUAhmOvl8oBMOvMSyu3E1RiL1a/edit?usp=sharing&ouid=115067999394823536407&rtpof=true&sd=true)!
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### Built With
+
+* [React.js](https://reactjs.org/)
+* [Python](https://www.python.org/)
+* [MongoDB](https://www.mongodb.com/)
+* [auth0](https://auth0.com/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+
+Please follow the steps to ensure npm in installed.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- USAGE -->
+## Usage
 
 In the project directory, you can run:
 
@@ -68,3 +118,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- FAQ -->
+## FAQ
+Any questions? Read our [FAQ](https://docs.google.com/document/d/17MAaQNJpouoA0WA9IZcjq8RcKnQ1xE14ZiNQs3iSkoU/edit?usp=sharing)!
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- CONTACT -->
+## Contact
+UW Buddies is no longer being maintained. Please contact fydpthrowaway@gmail.com for any questions or concerns.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
