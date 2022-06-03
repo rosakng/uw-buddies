@@ -1,0 +1,7 @@
+number of users,M value being tested,time to completion,average time per user,percentage of users with at least one match,average number of matches,maximum number of matches
+20,2,3.758291006,0.18791455,0.7,1.428571429,2
+20,5,3.419130087,0.170956504,0.95,3.368421053,5
+20,10,3.283862829,0.164193141,1,7.4,10
+20,15,3.515691042,0.175784552,1,12.9,15
+20,20,3.690793037,0.184539652,1,19,19
+20,50,3.44294405,0.172147202,1,19,19
